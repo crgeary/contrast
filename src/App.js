@@ -58,7 +58,21 @@ class App extends Component {
             colors.forEach(c2 => {
                 if (c1.toHex() !== c2.toHex()) {
                     const theScore = score(hex(c1.toHexString(), c2.toHexString()));
-                    if (this.state.filter === `all` || this.state.filter === theScore.toLowerCase()) {
+                    if (this.state.filter === `all`) {
+                        results.push({
+                            backgroundColor: c1.toHexString(),
+                            textColor: c2.toHexString(),
+                            contrast: hex(c1.toHexString(), c2.toHexString()),
+                            score: theScore
+                        });
+                    } else if (this.state.filter === `aa` && (theScore.toLowerCase() == `aa` || theScore.toLowerCase() == `aaa`)) {
+                        results.push({
+                            backgroundColor: c1.toHexString(),
+                            textColor: c2.toHexString(),
+                            contrast: hex(c1.toHexString(), c2.toHexString()),
+                            score: theScore
+                        });
+                    } else if (this.state.filter === `aaa` && theScore.toLowerCase() == `aaa`) {
                         results.push({
                             backgroundColor: c1.toHexString(),
                             textColor: c2.toHexString(),
