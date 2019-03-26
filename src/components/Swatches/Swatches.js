@@ -1,7 +1,12 @@
 import React from "react";
+import styled from "styled-components";
+
 import Swatch from "./Swatch";
 
-import "./Swatches.css";
+const SwatchWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`
 
 class Swatches extends React.Component {
 
@@ -9,11 +14,11 @@ class Swatches extends React.Component {
         const colors = this.props.colors;
         return (
             <div>
-                <div className="swatches">
+                <SwatchWrapper>
                     {colors.map((v, k) => (
                         <Swatch key={k} {...v} />
                     ))}
-                </div>
+                </SwatchWrapper>
             </div>
         );
     }
