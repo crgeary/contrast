@@ -4,8 +4,8 @@ import styled from "styled-components";
 const SwatchWrapper = styled.div`
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
     background-color: ${p => p.backgroundColor || `#ffffff`};
     color: ${p => p.textColor || `#000000`};
     position: relative;
@@ -33,8 +33,8 @@ class Swatch extends React.Component {
     render() {
         return (
             <SwatchWrapper {...this.props}>
-                <SwatchText>Aa Bb</SwatchText>
-                <SwatchText size="lg" color={this.props.textColor}>Aa Bb</SwatchText>
+                <SwatchText>Abc</SwatchText>
+                <SwatchText size="lg" color={this.props.textColor}>Abc</SwatchText>
                 {this.props.score && <SwatchScore>{this.props.score}</SwatchScore>}
             </SwatchWrapper>
         );

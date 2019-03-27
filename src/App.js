@@ -89,6 +89,11 @@ class App extends Component {
     doColorFilterChange(filter) {
         this.setState({ filter });
     };
+    doRemoveColor(color) {
+        this.setState({
+            colors: this.state.colors.filter(c => c !== color)
+        });
+    };
     render() {
         return (
             <React.Fragment>
@@ -103,7 +108,10 @@ class App extends Component {
                         />
                         <ul>
                             {this.state.colors.map((v, k) => (
-                                <li key={k} style={{ backgroundColor: v }}>{v}</li>
+                                <li key={k} style={{ backgroundColor: v }}>
+                                    {v}
+                                    <button onClick={this.doRemoveColor.bind(this, v)}>&times;</button>
+                                </li>
                             ))}
                         </ul>
                     </Sidebar>
@@ -113,7 +121,12 @@ class App extends Component {
                             <button onClick={this.doColorFilterChange.bind(this, `aa`)}>AA</button>
                             <button onClick={this.doColorFilterChange.bind(this, `aaa`)}>AAA</button>
                         </Toolbar>
-                        <Swatches colors={this.colors()} />
+                        {this.state.colors.length >= 2
+                            ? (
+                                <Swatches colors={this.colors()} />
+                            ) : (
+                                <p>Please add 2 or more colours.</p>
+                            )}
                     </Main>
                 </Wrapper>
             </React.Fragment>
