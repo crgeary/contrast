@@ -2,27 +2,12 @@ import React, { Component } from "react";
 import { ChromePicker } from "react-color";
 import tinycolor from "tinycolor2";
 import { hex, score } from "wcag-contrast";
-import { createGlobalStyle } from "styled-components";
 
 import Main from "./components/Main";
-import Sidebar from "./components/Sidebar";
+import Sidebar, { ColorList } from "./components/Sidebar/Sidebar";
 import Wrapper from "./components/Wrapper";
 import Toolbar from "./components/Toolbar";
 import Swatches from "./components/Swatches/Swatches";
-
-const GlobalStyle = createGlobalStyle`
-    * {
-        box-sizing: border-box;
-    }
-    html, body, #root {
-        height: 100%;
-    }
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        font-size: 14px;
-        line-height: 1.65;
-    }
-`
 
 class App extends Component {
     constructor() {
@@ -32,6 +17,7 @@ class App extends Component {
             colors: ['#000000', '#ffffff'],
             filter: `all`
         };
+        this.doRemoveColor = this.doRemoveColor.bind(this);
         this.doNewColorButtonClick = this.doNewColorButtonClick.bind(this);
         this.doColorPickerChange = this.doColorPickerChange.bind(this);
     }
@@ -97,7 +83,6 @@ class App extends Component {
     render() {
         return (
             <React.Fragment>
-                <GlobalStyle />
                 <Wrapper>
                     <Sidebar>
                         <button onClick={this.doNewColorButtonClick}>Add</button>
@@ -106,14 +91,7 @@ class App extends Component {
                             onChange={this.doColorPickerChange}
                             disableAlpha={true}
                         />
-                        <ul>
-                            {this.state.colors.map((v, k) => (
-                                <li key={k} style={{ backgroundColor: v }}>
-                                    {v}
-                                    <button onClick={this.doRemoveColor.bind(this, v)}>&times;</button>
-                                </li>
-                            ))}
-                        </ul>
+                        <ColorList colors={this.state.colors} doRemoveColor={this.doRemoveColor} />
                     </Sidebar>
                     <Main>
                         <Toolbar>
