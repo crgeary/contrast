@@ -1,27 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 
 import Swatch from "./Swatch";
 
-const SwatchWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-`
-
-class Swatches extends React.Component {
-
+export default class Swatches extends React.Component {
     render() {
-        const colors = this.props.colors;
         return (
-            <div>
-                <SwatchWrapper>
-                    {colors.map((v, k) => (
+            <div className="swatches">
+                {this.props.colors.map((v, k) => (
+                    <div class="swatches__swatch">
                         <Swatch key={k} {...v} />
-                    ))}
-                </SwatchWrapper>
+                    </div>
+                ))}
             </div>
         );
     }
 }
-
-export default Swatches;

@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.65;
+    font-size: 16px;
+    color: rgba(#000000, .65);
+}
+
+svg {
+    fill: currentColor;
+}
+
+.wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar {
+    flex: 0 0 265px;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+
+    &__section {
+        margin-bottom: 40px;
+
+        &--sm {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.main {
+    flex: 1 1 auto;
+    background-color: #F1F5F8;
+    padding: 20px;
+}
+
+.topbar {
+    border-bottom: 1px solid rgba(#000000, .1);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.colors {
+
+    $height: 24px;
+
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    line-height: $height;
+
+    &__item {
+        border-bottom: 1px solid rgba(#000000, .1);
+        padding: 5px 0;
+        display: flex;
+    }
+
+    &__swatch {
+        content: '';
+        display: inline-block;
+        height: $height;
+        flex: 0 0 $height * 1.5;
+        border-radius: 2px;
+        box-shadow: 0 1px 5px rgba(#000000, .25);
+        margin-right: 10px;
+    }
+
+    &__remove {
+        padding: 4px;
+        border: none;
+        margin-left: auto;
+        opacity: .35;
+        cursor: pointer;
+        background-color: transparent;
+
+        svg {
+            width: $height - 8px;
+            height: $height - 8px;
+            display: block;
+        }
+
+        &:hover, &:focus {
+            opacity: 1;
+        }
+    }
+}
+
+.swatches {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px -5px -5px;
+    
+    &__swatch {
+        padding: 0 5px;
+        margin-bottom: 10px;
+    }
+}
+
+.swatch {
+    position: relative;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(#000000, .15);
+    height: 125px;
+    width: 125px;
+    background-color: #ffffff;
+
+    &__result {
+        display: flex;
+        justify-content: space-between;
+        line-height: 22px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid rgba(#000000, .1);
+
+        &--lg {
+            font-size: 24px;
+        }
+    }
+
+    &__score {
+        background-color: #ffffff;
+        font-size: 14px;
+        height: 20px;
+        padding: 0 4px;
+        font-weight: 500;
+        line-height: 20px;
+
+        &--fail {
+            color: red;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+    }
+}
+
+.button {
+    display: inline-block;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    padding: 8px 18px;
+    font-size: 14px;
+    vertical-align: middle;
+    background-color: grayscale(#214cc5);
+
+    &--primary {
+        background-color: #214cc5;
+        color: #ffffff;
+    }
+}
+
+.sr {
+    position: absolute;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    clip: rect(0,0,0,0);
+    border: none;
+}
