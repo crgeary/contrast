@@ -26,7 +26,7 @@ export default class Swatch extends React.Component {
                     </div>
 
                 </div>
-                <div className="swatch__footer">
+                <div className="swatch__ratio">
                     {Math.floor(contrast * 100) / 100}:1
                 </div>
             </div>
