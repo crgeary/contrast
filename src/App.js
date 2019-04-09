@@ -108,16 +108,11 @@ class App extends Component {
                 </div>
                 <div className="main">
                     <div className="topbar">
-                        <button className="button button--primary" onClick={this.doColorFilterChange.bind(this, `all`)}>All</button>
-                        <button className="button button--primary" onClick={this.doColorFilterChange.bind(this, `aa`)}>AA</button>
-                        <button className="button button--primary" onClick={this.doColorFilterChange.bind(this, `aaa`)}>AAA</button>
+                        <button className={`button button--${this.state.filter === `all` ? `primary` : `secondary`}`} onClick={this.doColorFilterChange.bind(this, `all`)}>All</button>
+                        <button className={`button button--${this.state.filter === `aa` ? `primary` : `secondary`}`} onClick={this.doColorFilterChange.bind(this, `aa`)}>AA</button>
+                        <button className={`button button--${this.state.filter === `aaa` ? `primary` : `secondary`}`} onClick={this.doColorFilterChange.bind(this, `aaa`)}>AAA</button>
                     </div>
-                    {this.state.colors.length >= 2
-                        ? (
-                            <Swatches colors={this.colors()} />
-                        ) : (
-                            <p>Please add 2 or more colours.</p>
-                        )}
+                    <Swatches colors={this.colors()} />
                 </div>
             </div>
         );

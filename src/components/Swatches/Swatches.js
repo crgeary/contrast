@@ -4,6 +4,9 @@ import Swatch from "./Swatch";
 
 export default class Swatches extends React.Component {
     render() {
+        if (this.props.colors.length < 2) {
+            return <p>Please add 2 or more colours.</p>;
+        }
         return (
             <div className="swatches">
                 {this.props.colors.map((v, k) => (
