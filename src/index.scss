@@ -121,12 +121,16 @@ svg {
     &__result {
         display: flex;
         justify-content: space-between;
-        line-height: 22px;
+        line-height: 28px;
         margin-bottom: 5px;
         border-bottom: 1px solid rgba(#000000, .1);
 
         &--lg {
-            font-size: 24px;
+            font-size: 28px;
+        }
+
+        &--fail {
+            text-decoration: line-through;
         }
     }
 
