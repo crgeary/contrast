@@ -8,9 +8,9 @@ export default class Swatch extends React.Component {
         return `fail`;
     }
     render() {
-        const { backgroundColor, textColor, score, contrast, scoreLarge } = this.props;
+        const { backgroundColor, textColor, score, contrast, scoreLarge, isActive } = this.props;
         return (
-            <div className="swatch" style={{ backgroundColor, color: textColor }}>
+            <div className={`swatch ${isActive && `swatch--active`}`} style={{ backgroundColor, color: textColor }}>
                 <div className="swatch__body">
 
                     <div className={`swatch__result swatch__result--${this.cssScoreModifier(score)}`}>

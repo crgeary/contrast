@@ -8,10 +8,10 @@ export default class Swatches extends React.Component {
             return <p>Please add 2 or more colours.</p>;
         }
         return (
-            <div className="swatches">
+            <div className={`swatches ${this.props.currentHoverColor && `swatches--active`}`}>
                 {this.props.colors.map((v, k) => (
                     <div class="swatches__swatch">
-                        <Swatch key={k} {...v} />
+                        <Swatch key={k} isActive={this.props.currentHoverColor === v.backgroundColor} {...v} />
                     </div>
                 ))}
             </div>

@@ -12,8 +12,11 @@ class App extends Component {
         super(...arguments);
         this.state = {
             colors: ['#000000', '#ffffff'],
-            filter: `all`
+            filter: `all`,
+            currentHoverColor: null
         };
+        this.doColorMouseOut = this.doColorMouseOut.bind(this);
+        this.doColorMouseOver = this.doColorMouseOver.bind(this);
         this.doRemoveColor = this.doRemoveColor.bind(this);
         this.doNewColorButtonClick = this.doNewColorButtonClick.bind(this);
     }
@@ -95,6 +98,16 @@ class App extends Component {
         });
         this.updateHash(colors);
     };
+    doColorMouseOver(color) {
+        this.setState({
+            currentHoverColor: color
+        });
+    };
+    doColorMouseOut() {
+        this.setState({
+            currentHoverColor: null
+        });
+    };
     render() {
         return (
             <div className="wrapper">
@@ -103,7 +116,12 @@ class App extends Component {
                         <Picker doNewColorButtonClick={this.doNewColorButtonClick} />
                     </div>
                     <div className="sidebar__section">
-                        <Colors colors={this.state.colors} doRemoveColor={this.doRemoveColor} />
+                        <Colors
+                            colors={this.state.colors}
+                            doRemoveColor={this.doRemoveColor}
+                            doMouseOut={this.doColorMouseOut}
+                            doMouseOver={this.doColorMouseOver}
+                        />
                     </div>
                 </div>
                 <div className="main">
@@ -112,7 +130,7 @@ class App extends Component {
                         <button className={`button button--${this.state.filter === `aa` ? `primary` : `secondary`}`} onClick={this.doColorFilterChange.bind(this, `aa`)}>AA</button>
                         <button className={`button button--${this.state.filter === `aaa` ? `primary` : `secondary`}`} onClick={this.doColorFilterChange.bind(this, `aaa`)}>AAA</button>
                     </div>
-                    <Swatches colors={this.colors()} />
+                    <Swatches colors={this.colors()} currentHoverColor={this.state.currentHoverColor} />
                 </div>
             </div>
         );

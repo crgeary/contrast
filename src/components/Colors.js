@@ -4,11 +4,16 @@ const crossIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
 
 export default class Colors extends React.Component {
     render() {
-        const { colors, doRemoveColor } = this.props;
+        const { colors, doRemoveColor, doMouseOver, doMouseOut } = this.props;
         return (
             <ul className="colors">
                 {colors.map((v, k) => (
-                    <li key={k} className="colors__item">
+                    <li
+                        key={k}
+                        className="colors__item"
+                        onMouseOver={() => doMouseOver(v)}
+                        onMouseOut={() => doMouseOut(v)}
+                    >
                         <span className="colors__swatch" style={{ backgroundColor: v }} />
                         <span className="colors__hex">{v}</span>
                         <button className="colors__remove" onClick={() => doRemoveColor(v)}>

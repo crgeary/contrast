@@ -118,6 +118,14 @@ svg {
     background-color: #ffffff;
     border-radius: 2px;
 
+    .swatches--active & {
+        opacity: .25;
+    }
+
+    &--active {
+        opacity: 1 !important;
+    }
+
     &__result {
         display: flex;
         justify-content: space-between;
