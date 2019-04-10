@@ -13,9 +13,10 @@ export default class Colors extends React.Component {
                         className="colors__item"
                         onMouseOver={() => doMouseOver(v)}
                         onMouseOut={() => doMouseOut(v)}
+                        tabindex="0"
                     >
                         <span className="colors__swatch" style={{ backgroundColor: v }} />
-                        <span className="colors__hex">{v}</span>
+                        <code className="colors__hex">{v}</code>
                         <button className="colors__remove" onClick={() => doRemoveColor(v)}>
                             {crossIcon}
                             <span class="sr">Remove</span>
