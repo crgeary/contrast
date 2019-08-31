@@ -1,0 +1,40 @@
+.header {
+    text-align: center;
+    padding-top: 75px;
+    margin-bottom: 50px;
+    font-size: 18px;
+    position: relative;
+
+    .theme-switch {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+    }
+
+    &__description {
+        p {
+            display: inline-block;
+        }
+        svg {
+            color: #285E61;
+        }
+    }
+
+    &__about-button {
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        vertical-align: middle;
+        margin-left: 8px;
+        cursor: pointer;
+        &:hover, &:focus {
+            svg {
+                color: #2C7A7B;
+            }
+        }
+    }
+
+    *:last-child {
+        margin-bottom: 0;
+    }
+}

@@ -1,20 +1,34 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Swatch from "./Swatch";
+import Swatch from '../Swatch/Swatch';
 
-export default class Swatches extends React.Component {
-    render() {
-        if (this.props.colors.length < 2) {
-            return <p>Please add 2 or more colours.</p>;
-        }
-        return (
-            <div className={`swatches ${this.props.currentHoverColor && `swatches--active`}`}>
-                {this.props.colors.map((v, k) => (
-                    <div class="swatches__swatch">
-                        <Swatch key={k} isActive={this.props.currentHoverColor === v.backgroundColor} {...v} />
-                    </div>
-                ))}
-            </div>
-        );
-    }
+import './swatches.scss';
+import canvas from '../../images/canvas.svg';
+
+function Swatches ({ colors, doColorSwatchClick }) {
+    return (
+        <div className="swatches">
+            {colors.length >= 2 ? (
+                <>
+                    {colors.map((color, k) => (
+                        <div className="swatches__swatch" key={k}>
+                            <Swatch color={color} doColorSwatchClick={doColorSwatchClick} />
+                        </div>
+                    ))}
+                </>
+            ) : (
+                <div className="swatches__none">
+                    <img src={canvas} alt="Lady staring at a blank canvas" />
+                </div>
+            )}
+            
+        </div>
+    );
 }
+
+Swatches.propTypes = {
+    colors: PropTypes.array.isRequired,
+};
+
+export default Swatches;

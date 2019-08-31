@@ -1,0 +1,68 @@
+.colors {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 720px;
+    margin: 0 auto 75px auto;
+
+    & > p {
+        color: #9B2C2C;
+        margin-top: 15px;
+    }
+
+    &__swatches {
+        display: flex;
+        padding-left: 0;
+        line-height: 28px;
+        margin-bottom: 0;
+        font-size: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        &-extra {
+            margin-left: 5px;
+        }
+    }
+
+    &__swatch {
+        list-style: none;
+        flex: 1 0 auto;
+        height: 28px;
+        margin-left: 4px;
+        border-radius: 2px;
+        border: 1px solid rgba(#000000, .1);
+        box-shadow: 0 1px 3px rgba(#000000, .075);
+        padding: 0 8px 0 0;
+        flex: 0 0 auto;
+        margin-bottom: 4px;
+        display: flex;
+        overflow: hidden;
+        font-family: monospace;
+
+        &--light {
+            color: #1A202C;
+        }
+        &--dark {
+            color: #F7FAFC;
+        }
+    }
+
+    &__remove {
+        background-color: transparent;
+        padding: 0 4px;
+        border: 0;
+        border-right: 1px solid rgba(#000, .2);
+        margin: -1px 5px -1px -1px;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        & > svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
