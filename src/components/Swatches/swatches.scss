@@ -1,0 +1,42 @@
+.swatches {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px 90px;
+
+    &__swatch {
+        flex: 0 0 100%;
+        max-width: (100%/1);
+        padding: 0 5px;
+        margin-bottom: 10px;
+    }
+
+    &__none {
+        width: 100%;
+        max-width: 520px;
+        margin: 50px auto;
+    }
+
+    @media screen and (min-width: 480px) {
+        &__swatch {
+            max-width: (100%/2);
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        &__swatch {
+            max-width: (100%/4);
+        }
+    }
+
+    @media screen and (min-width: 1040px) {
+        &__swatch {
+            max-width: (100%/6);
+        }
+    }
+
+    @media screen and (min-width: 1450px) {
+        &__swatch {
+            max-width: (100%/8);
+        }
+    }
+}
