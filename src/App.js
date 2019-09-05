@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import tinycolor from 'tinycolor2';
 import { hex } from 'wcag-contrast';
+import ReactGA from 'react-ga';
 
 import Swatches from './components/Swatches/Swatches';
 import Picker from './components/Picker/Picker';
@@ -62,6 +63,10 @@ export default class App extends Component {
         this.updateHash(colors);
     }
     doDarkModeToggle() {
+        ReactGA.event({
+            category: `UI`,
+            action: `Enabled ${this.state.isDark ? `Light` : `Dark`} Mode`
+        });
         this.setState({ isDark: !this.state.isDark });
     }
     doColorSwatchClick(color) {

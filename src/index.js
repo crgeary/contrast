@@ -6,6 +6,7 @@ import App from './App';
 
 if (process.env.NODE_ENV === `production`) {
     ReactGA.initialize(`UA-113488288-2`);
+    ReactGA.pageview(window.location.pathname);
 }
 
 ReactDOM.render(<App />, document.getElementById(`root`));
