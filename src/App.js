@@ -11,6 +11,7 @@ import Logo from './components/Logo/Logo';
 import Popup from './components/Popup/Popup';
 import Colors from './components/Colors/Colors';
 import SwatchDetail from './components/SwatchDetail/SwatchDetail';
+import RangeSlider from './components/RangeSlider/RangeSlider';
 
 import './app.scss';
 
@@ -21,12 +22,15 @@ export default class App extends Component {
             colors: [],
             isDark: false,
             currentColor: null,
+            minContrast: 0,
         };
         this.doClosePopup = this.doClosePopup.bind(this);
         this.doNewColor = this.doNewColor.bind(this);
         this.doDarkModeToggle = this.doDarkModeToggle.bind(this);
         this.doColorSwatchClick = this.doColorSwatchClick.bind(this);
         this.doRemoveColor = this.doRemoveColor.bind(this);
+        this.doRangeSliderChange = this.doRangeSliderChange.bind(this);
+        this.doSetRangeSlider = this.doSetRangeSlider.bind(this);
     }
     componentDidMount() {
         if (!window.location.hash) {
@@ -66,6 +70,14 @@ export default class App extends Component {
             currentColor: color
         });
     }
+    doRangeSliderChange(e) {
+        this.setState({
+            minContrast: e.target.value
+        });
+    }
+    doSetRangeSlider(contrast) {
+        this.setState({ minContrast: contrast });
+    }
     doClosePopup() {
         document.body.classList.remove('body--popup');
         this.setState({
@@ -87,7 +99,7 @@ export default class App extends Component {
             });
         });
 
-        return r;
+        return r.filter(c => c.contrast >= this.state.minContrast);
     }
     render() {
         return (
@@ -104,6 +116,7 @@ export default class App extends Component {
                     <div className="container">
                         <Picker doNewColor={this.doNewColor} />
                         <Colors colors={this.state.colors} doRemoveColor={this.doRemoveColor} />
+                        <RangeSlider current={this.state.minContrast} doRangeSliderChange={this.doRangeSliderChange} doSetRangeSlider={this.doSetRangeSlider} />
                     </div>
                     <div className="container container--wide">
 

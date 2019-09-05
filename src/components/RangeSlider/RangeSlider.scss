@@ -1,0 +1,118 @@
+.range-slider {
+    margin-bottom: 50px;
+    height: 50px;
+    padding-top: (50px - 26px);
+
+    &__control {
+        position: relative;
+        height: 28px;
+
+        input[type="range"] {
+            appearance: none;
+            width: 100%;
+            background: transparent;
+            position: relative;
+            z-index: 10;
+
+            &::-webkit-slider-thumb {
+                appearance: none;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            @mixin thumb() {
+                border: none;
+                height: 26px;
+                width: 16px;
+                border-radius: 2px;
+                background: #2C7A7B;
+                cursor: grab;
+                margin-top: -8px;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            }
+
+            &::-webkit-slider-thumb { @include thumb(); }
+            &::-moz-range-thumb { @include thumb(); }
+            &::-ms-thumb { @include thumb(); }
+
+            @mixin track() {
+                width: 100%;
+                height: 10px;
+                border: none;
+                border-radius: 2px;
+                background-color: #A0AEC0;
+            }
+
+            &::-webkit-slider-runnable-track {
+                @include track();
+            }
+
+            &::-moz-range-track {
+                @include track();
+            }
+        }
+    }
+
+    &__current, &__indicator {
+        position: absolute;
+        font-size: 11px;
+        font-weight: bold;
+        line-height: 1;
+        border-radius: 2px;
+        padding: 4px 6px;
+        bottom: calc(100% + 5px);
+        text-align: center;
+        border: none;
+    }
+
+    &__current {
+        background-color: #234E52;
+        z-index: 10;
+        color: #ffffff;
+        width: 40px;
+    }
+
+    &__indicator {
+        background-color: #CBD5E0;
+        z-index: 5;
+        cursor: pointer;
+        transform: translateX(50%);
+
+        &::after {
+            content: '';
+            display: block;
+            height: 15px;
+            width: 2px;
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            background-color: #CBD5E0;
+        }
+
+        @function indicator-left($v) {
+            @return calc(((#{$v}/21)*100%) - ((16/100) * ((#{$v}/21)*100%)));
+        }
+
+        &--3\:1 {
+            left: indicator-left(3);
+        }
+        &--4\.5\:1 {
+            left: indicator-left(4.5);
+        }
+        &--7\:1 {
+            left: indicator-left(7);
+        }
+
+        &:hover, &:focus {
+            outline: none;
+            background-color: #A0AEC0;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}
