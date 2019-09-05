@@ -24,8 +24,8 @@ export default function Swatch ({ color, isSaved = false, doColorSwatchClick }) 
     return (
         <div className="swatch" onClick={() => doColorSwatchClick(color)}>
             <span className="swatch__preview" style={{ backgroundColor: color.backgroundColor.toHexString(), color: color.textColor.toHexString() }}>
-                <span className={`swatch__text swatch__text--large${scoreLarge ? `` : ` swatch__text--strike`}`}>Abc</span>
                 <span className={`swatch__text swatch__text--small${score ? `` : ` swatch__text--strike`}`}>Abc</span>
+                <span className={`swatch__text swatch__text--large${scoreLarge ? `` : ` swatch__text--strike`}`}>Abc</span>
                 <span className="swatch__scores">
                     <span className={`swatch__score swatch__score--${score ? `pass` : `fail`}`}>
                         {score ? checkIcon : crossIcon}
