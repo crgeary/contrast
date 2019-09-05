@@ -89,7 +89,7 @@
             left: 50%;
             top: 100%;
             transform: translateX(-50%);
-            background-color: #CBD5E0;
+            background-color: inherit;
         }
 
         &--3\:1 {
@@ -110,5 +110,24 @@
 
     @media screen and (max-width: 767px) {
         display: none;
+    }
+}
+
+.app--dark {
+    .range-slider {
+        &__control {
+            input[type="range"] {
+                &::-webkit-slider-thumb { background-color: #38B2AC; }
+                &::-moz-range-thumb { background-color: #38B2AC; }
+                &::-ms-thumb { background-color: #38B2AC; }
+                
+                &::-webkit-slider-runnable-track { background-color: #4A5568; }
+                &::-moz-range-track { background-color: #4A5568; }
+            }
+        }
+        &__indicator {
+            background-color: #4A5568;
+            color: #FFFFFF;
+        }
     }
 }
