@@ -78,7 +78,7 @@
         background-color: #CBD5E0;
         z-index: 5;
         cursor: pointer;
-        transform: translateX(50%);
+        
 
         &::after {
             content: '';
@@ -92,18 +92,14 @@
             background-color: #CBD5E0;
         }
 
-        @function indicator-left($v) {
-            @return calc(((#{$v}/21)*100%) - ((16/100) * ((#{$v}/21)*100%)));
-        }
-
         &--3\:1 {
-            left: indicator-left(3);
+            left: calc(((3/21)*100%) - 10px);
         }
         &--4\.5\:1 {
-            left: indicator-left(4.5);
+            left: calc(((4.5/21)*100%) - 14px);
         }
         &--7\:1 {
-            left: indicator-left(7);
+            left: calc(((7/21)*100%) - 10px);
         }
 
         &:hover, &:focus {

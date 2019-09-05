@@ -7,7 +7,7 @@ export default function RangeSlider ({ current, doRangeSliderChange, doSetRangeS
     return (
         <div className="range-slider">
             <div class="range-slider__control">
-                <span class="range-slider__current" style={{ left: `calc(${currentPercentage}% - ${(16/100)*currentPercentage}px - 10px)` }}>{current}</span>
+                <span class="range-slider__current" style={{ left: `calc(${currentPercentage}% - ${(16/100)*currentPercentage}px - 12px)` }}>{current}</span>
                 <button class="range-slider__indicator range-slider__indicator--3:1" onClick={() => doSetRangeSlider(3)}>3:1</button>
                 <button class="range-slider__indicator range-slider__indicator--4.5:1" onClick={() => doSetRangeSlider(4.5)}>4.5:1</button>
                 <button class="range-slider__indicator range-slider__indicator--7:1" onClick={() => doSetRangeSlider(7)}>7:1</button>
