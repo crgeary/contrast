@@ -55,10 +55,10 @@
 
     &__scores {
         position: absolute;
-        top: 5px;
-        right: 5px;
-        width: 68px;
-        bottom: 3px;
+        top: 7px;
+        right: 7px;
+        width: 62px;
+        bottom: 5px;
         font-size: 8px;
         text-transform: uppercase;
         line-height: 1.2;
@@ -70,8 +70,8 @@
 
     &__score {
         position: relative;
-        background-color: rgba(#FFFFFF, .925);
-        padding: 5px 5px 5px 28px;
+        background-color: rgba(#FFFFFF, .875);
+        padding: 5px 5px 5px 26px;
         border-radius: 2px;
         box-shadow: 0 1px 2px rgba(#000000, .1);
 
@@ -81,7 +81,7 @@
         }
         strong {
             display: block;
-            font-size: 14px;
+            font-size: 12px;
             letter-spacing: .75px;
         }
         svg {
@@ -89,15 +89,19 @@
             height: 16px;
             position: absolute;
             top: 50%;
-            left: 6px;
+            left: 5px;
             transform: translateY(-50%);
         }
 
         &--fail {
-            color: #9B2C2C;
+            svg {
+                color: #9B2C2C;
+            }
         }
         &--pass {
-            color: #276749;
+            svg {
+                color: #276749;
+            }
         }
     }
 }
