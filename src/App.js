@@ -112,7 +112,7 @@ export default class App extends Component {
 
                 <Header doDarkModeToggle={this.doDarkModeToggle}>
                     <Logo />
-                    <HeaderDescription>Accessible color combinations</HeaderDescription>
+                    <HeaderDescription>Check your color palette for accessible combinations</HeaderDescription>
                 </Header>
 
                 {this.state.currentColor && <Popup closePopup={this.doClosePopup}><SwatchDetail color={this.state.currentColor} /></Popup>}
