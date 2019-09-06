@@ -43,7 +43,7 @@ export default class App extends Component {
         });
     }
     updateHash() {
-        window.history.replaceState(undefined, undefined, `#${this.state.colors.map(h => h.replace('#', '')).join(',')}`);
+        window.history.replaceState(undefined, undefined, `#${this.state.colors.map(color => tinycolor(color).toHex()).join(',')}`);
     };
     doNewColor(color) {
         const colors = this.state.colors;
