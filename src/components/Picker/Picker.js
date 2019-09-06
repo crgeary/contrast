@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SketchPicker } from 'react-color';
+import tinycolor from 'tinycolor2';
 
 import Button from '../Button/Button';
 
@@ -43,23 +44,24 @@ export default class Picker extends Component {
         });
     }
     render() {
+        const currentColor = this.state.currentColor;
         return (
             <form className="picker" onSubmit={this.doNewColorSubmit}>
                 <div className="picker__input">
-                    <input type="text" placeholder="Hex/RGB" onChange={this.doInputChange} value={this.state.currentColor} />
+                    <input type="text" placeholder="Hex/RGB" onChange={this.doInputChange} value={currentColor} />
                     <button type="button" className="picker__swatch" onClick={this.doColorPickerToggle}>
                         {colorIcon}
                         <span className="sr">Color Picker</span>
                     </button>
                     <div className="picker__colorpicker" style={{ display: this.state.showColorPicker ? `block` : `none` }}>
                         <SketchPicker
-                            color={this.state.currentColor}
+                            color={currentColor}
                             onChange={this.doColorPickerChange}
                             disableAlpha={true}
                         />
                     </div>
                 </div>
-                <Button>Add Color</Button>
+                <Button style={{ backgroundColor: currentColor, color: tinycolor(currentColor).isDark() ? `#FFFFFF` : `#000000` }}>Add Color</Button>
             </form>
         );
     }
