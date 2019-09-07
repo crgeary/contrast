@@ -13,6 +13,7 @@ import Popup from './components/Popup/Popup';
 import Colors from './components/Colors/Colors';
 import SwatchDetail from './components/SwatchDetail/SwatchDetail';
 import RangeSlider from './components/RangeSlider/RangeSlider';
+import Controls from './components/Controls/Controls';
 
 import './app.scss';
 
@@ -118,18 +119,21 @@ export default class App extends Component {
                 {this.state.currentColor && <Popup closePopup={this.doClosePopup}><SwatchDetail color={this.state.currentColor} /></Popup>}
 
                 <div className="main">
-                    <div className="container">
+                
+                    <Controls>
                         <Picker doNewColor={this.doNewColor} />
-                        <Colors colors={this.state.colors} doRemoveColor={this.doRemoveColor} />
+                        {this.state.colors.length >= 1 ? (
+                            <Colors colors={this.state.colors} doRemoveColor={this.doRemoveColor} />
+                        ) : null}
                         {this.state.colors.length >= 2 ? (
                             <RangeSlider current={this.state.minContrast} doRangeSliderChange={this.doRangeSliderChange} doSetRangeSlider={this.doSetRangeSlider} />
                         ) : null}
-                    </div>
+                    </Controls>
+
                     <div className="container container--wide">
-
                         <Swatches colors={this.colors()} doColorSwatchClick={this.doColorSwatchClick} />
-
                     </div>
+
                 </div>
 
                 <Footer>

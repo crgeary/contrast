@@ -19,6 +19,9 @@ function Swatches ({ colors, doColorSwatchClick }) {
                 </>
             ) : (
                 <div className="swatches__none">
+                    {colors.length < 2 ? (
+                        <div className="swatches__error">Please add at least 2 colors.</div>
+                    ) : null}
                     <img src={canvas} alt="Lady staring at a blank canvas" />
                 </div>
             )}
