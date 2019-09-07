@@ -52,16 +52,14 @@ export default class App extends Component {
             colors.push(color);
             this.setState({
                 colors
-            });
+            }, this.updateHash);
         }
-        this.updateHash();
     }
     doRemoveColor(color) {
         const colors = this.state.colors.filter(c => c !== color);
         this.setState({
             colors: this.state.colors.filter(c => c !== color)
-        });
-        this.updateHash(colors);
+        }, this.updateHash);
     }
     doDarkModeToggle() {
         ReactGA.event({
@@ -119,7 +117,7 @@ export default class App extends Component {
                 {this.state.currentColor && <Popup closePopup={this.doClosePopup}><SwatchDetail color={this.state.currentColor} /></Popup>}
 
                 <div className="main">
-                
+
                     <Controls>
                         <Picker doNewColor={this.doNewColor} />
                         {this.state.colors.length >= 1 ? (
