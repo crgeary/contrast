@@ -61,7 +61,10 @@ export default class Picker extends Component {
                         />
                     </div>
                 </div>
-                <Button style={{ backgroundColor: currentColor, color: tinycolor(currentColor).isDark() ? `#FFFFFF` : `#000000` }}>Add Color</Button>
+                <Button
+                    style={{ backgroundColor: currentColor, color: tinycolor(currentColor).isDark() ? `#FFFFFF` : `#000000` }}
+                    disabled={currentColor ? false : true}
+                >Add Color</Button>
             </form>
         );
     }
