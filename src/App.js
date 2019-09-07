@@ -121,7 +121,9 @@ export default class App extends Component {
                     <div className="container">
                         <Picker doNewColor={this.doNewColor} />
                         <Colors colors={this.state.colors} doRemoveColor={this.doRemoveColor} />
-                        <RangeSlider current={this.state.minContrast} doRangeSliderChange={this.doRangeSliderChange} doSetRangeSlider={this.doSetRangeSlider} />
+                        {this.state.colors.length >= 2 ? (
+                            <RangeSlider current={this.state.minContrast} doRangeSliderChange={this.doRangeSliderChange} doSetRangeSlider={this.doSetRangeSlider} />
+                        ) : null}
                     </div>
                     <div className="container container--wide">
 
