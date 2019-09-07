@@ -61,7 +61,6 @@
         font-weight: bold;
         line-height: 1;
         border-radius: 2px;
-        padding: 4px 6px;
         bottom: calc(100% + 5px);
         text-align: center;
         border: none;
@@ -72,12 +71,18 @@
         z-index: 10;
         color: #ffffff;
         width: 40px;
+        padding: 4px 6px;
     }
 
     &__indicator {
         background-color: #CBD5E0;
         z-index: 5;
         cursor: pointer;
+        padding: 0;
+
+        & > div {
+            padding: 4px 6px;
+        }
         
 
         &::after {
@@ -111,6 +116,20 @@
     @media screen and (max-width: 767px) {
         display: none;
     }
+}
+
+.react-tooltip-lite {
+    background: #4A5568;
+    color: white;
+    font-size: 12px;
+    line-height: 1;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+.react-tooltip-lite-arrow {
+    border-color: #4A5568;
 }
 
 .app--dark {
