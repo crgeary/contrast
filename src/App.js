@@ -56,7 +56,6 @@ export default class App extends Component {
         }
     }
     doRemoveColor(color) {
-        const colors = this.state.colors.filter(c => c !== color);
         this.setState({
             colors: this.state.colors.filter(c => c !== color)
         }, this.updateHash);
