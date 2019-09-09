@@ -22,6 +22,16 @@
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
 
+    &__info {
+        color: #4A5568;
+        transition: transform .2s ease;
+    }
+
+    &:hover &__info, &:focus &__info {
+        transform: scale(1.5);
+        color: #1A202C;
+    }
+
     &__preview {
         padding: $padding;
         display: block;
@@ -121,11 +131,11 @@
             }
         }
 
-        &__star {
-            &:hover, &:focus {
-                background-color: #4A5568;
-                color: #ECC94B;
-            }
+        &__info {
+            color: #CBD5E0;
+        }
+        &:hover &__info, &:focus &__info {
+            color: #EDF2F7;
         }
     }
 }
