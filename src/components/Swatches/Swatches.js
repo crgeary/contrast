@@ -11,7 +11,7 @@ function Swatches ({ colors, doColorSwatchClick, colorsTotal, minContrast }) {
         <div className="swatches">
             {colors.length >= 2 ? (
                 <>
-                    <p className="swatches__info">Showing {colors.length} out of {colorsTotal * (colorsTotal - 1)} combinations with a contrast ratio over {minContrast}</p>
+                    <p className="swatches__info">Showing {colors.length} out of {colorsTotal * (colorsTotal - 1)} combinations where contrast ratio is over {minContrast}</p>
                     <div className="swatches__swatches">
                         {colors.map((color, k) => (
                             <div className="swatches__swatch" key={k}>
