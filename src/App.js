@@ -128,7 +128,7 @@ export default class App extends Component {
                     </Controls>
 
                     <div className="container container--wide">
-                        <Swatches colors={this.colors()} doColorSwatchClick={this.doColorSwatchClick} />
+                        <Swatches colorsTotal={this.state.colors.length} minContrast={this.state.minContrast} colors={this.colors()} doColorSwatchClick={this.doColorSwatchClick} />
                     </div>
 
                 </div>

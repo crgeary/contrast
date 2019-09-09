@@ -6,16 +6,19 @@ import Swatch from '../Swatch/Swatch';
 import './swatches.scss';
 import canvas from '../../images/canvas.svg';
 
-function Swatches ({ colors, doColorSwatchClick }) {
+function Swatches ({ colors, doColorSwatchClick, colorsTotal, minContrast }) {
     return (
         <div className="swatches">
             {colors.length >= 2 ? (
                 <>
-                    {colors.map((color, k) => (
-                        <div className="swatches__swatch" key={k}>
-                            <Swatch color={color} doColorSwatchClick={doColorSwatchClick} />
-                        </div>
-                    ))}
+                    <p className="swatches__info">Showing {colors.length} out of {colorsTotal * (colorsTotal - 1)} combinations with a contrast ratio over {minContrast}</p>
+                    <div className="swatches__swatches">
+                        {colors.map((color, k) => (
+                            <div className="swatches__swatch" key={k}>
+                                <Swatch color={color} doColorSwatchClick={doColorSwatchClick} />
+                            </div>
+                        ))}
+                    </div>
                 </>
             ) : (
                 <div className="swatches__none">
