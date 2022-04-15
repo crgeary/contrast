@@ -11,7 +11,7 @@
     overflow: auto;
 
     &__backface {
-        background-color: rgba(#4A5568, .85);
+        background-color: rgba(#4a5568, 0.85);
         top: 0;
         left: 0;
         right: 0;
@@ -46,7 +46,7 @@
         bottom: calc(100% + 10px);
         right: 0;
         cursor: pointer;
-        color: rgba(#ffffff, .65);
+        color: rgba(#ffffff, 0.65);
 
         & > svg {
             width: 32px;
@@ -57,9 +57,9 @@
 
 .app--dark {
     .popup {
-        background-color: rgba(#1A202C, .85);
+        background-color: rgba(#1a202c, 0.85);
         &__window {
-            background-color: #2D3748;
+            background-color: #2d3748;
         }
     }
 }

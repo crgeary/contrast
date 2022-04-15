@@ -1,7 +1,7 @@
-import { Instance } from "tinycolor2";
+import { Instance } from 'tinycolor2';
 
 export type SwatchColor = {
-  contrast: number;
-  textColor: Instance;
-  backgroundColor: Instance;
+    contrast: number;
+    textColor: Instance;
+    backgroundColor: Instance;
 };

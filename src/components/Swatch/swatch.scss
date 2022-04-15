@@ -1,5 +1,4 @@
 .swatch {
-
     $padding: 15px;
 
     background-color: #ffffff;
@@ -7,7 +6,7 @@
     line-height: 1.25;
     border-radius: 2px;
     overflow: hidden;
-    transition: transform .2s ease, box-shadow .2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
     position: relative;
     display: block;
@@ -16,26 +15,28 @@
     text-align: left;
     border: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         transform: scale(1.25);
         z-index: 10;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
 
     &__info {
-        color: #4A5568;
-        transition: transform .2s ease;
+        color: #4a5568;
+        transition: transform 0.2s ease;
     }
 
-    &:hover &__info, &:focus &__info {
+    &:hover &__info,
+    &:focus &__info {
         transform: scale(1.5);
-        color: #1A202C;
+        color: #1a202c;
     }
 
     &__preview {
         padding: $padding;
         display: block;
-        border-bottom: 2px solid rgba(#000000, .1);
+        border-bottom: 2px solid rgba(#000000, 0.1);
         font-weight: 600;
         position: relative;
     }
@@ -60,11 +61,11 @@
         text-transform: uppercase;
         font-size: 10px;
         line-height: 1.25;
-        color: #A0AEC0;
+        color: #a0aec0;
         strong {
             font-size: 16px;
             display: block;
-            color: #2D3748;
+            color: #2d3748;
         }
     }
 
@@ -80,24 +81,24 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        color: #1A202C;
+        color: #1a202c;
     }
 
     &__score {
         position: relative;
-        background-color: rgba(#FFFFFF, .875);
+        background-color: rgba(#ffffff, 0.875);
         padding: 5px 5px 5px 26px;
         border-radius: 2px;
-        box-shadow: 0 1px 2px rgba(#000000, .1);
+        box-shadow: 0 1px 2px rgba(#000000, 0.1);
 
         span {
-            letter-spacing: .2px;
-            opacity: .75;
+            letter-spacing: 0.2px;
+            opacity: 0.75;
         }
         strong {
             display: block;
             font-size: 12px;
-            letter-spacing: .75px;
+            letter-spacing: 0.75px;
         }
         svg {
             width: 16px;
@@ -110,7 +111,7 @@
 
         &--fail {
             svg {
-                color: #9B2C2C;
+                color: #9b2c2c;
             }
         }
         &--pass {
@@ -123,19 +124,20 @@
 
 .app--dark {
     .swatch {
-        background-color: #2D3748;
+        background-color: #2d3748;
 
         &__contrast {
             strong {
-                color: #F7FAFC;
+                color: #f7fafc;
             }
         }
 
         &__info {
-            color: #CBD5E0;
+            color: #cbd5e0;
         }
-        &:hover &__info, &:focus &__info {
-            color: #EDF2F7;
+        &:hover &__info,
+        &:focus &__info {
+            color: #edf2f7;
         }
     }
 }

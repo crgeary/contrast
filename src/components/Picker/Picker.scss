@@ -4,7 +4,7 @@
     max-width: 520px;
     background-color: #ffffff;
     padding: 3px;
-    border: 1px solid #CBD5E0;
+    border: 1px solid #cbd5e0;
     border-radius: 2px;
 
     &__input {
@@ -13,7 +13,7 @@
         border-radius: 2px;
         position: relative;
 
-        input[type="text"] {
+        input[type='text'] {
             background-color: #ffffff;
             border: none;
             margin: 0;
@@ -52,16 +52,16 @@
 
 .app--dark {
     .picker {
-        border-color: #4A5568;
-        background-color: #2D3748;
+        border-color: #4a5568;
+        background-color: #2d3748;
 
         &__input {
-            input[type="text"] {
-                background-color: #2D3748;
-                color: #F7FAFC;
-                
+            input[type='text'] {
+                background-color: #2d3748;
+                color: #f7fafc;
+
                 &::placeholder {
-                    color: #A0AEC0;
+                    color: #a0aec0;
                 }
             }
         }

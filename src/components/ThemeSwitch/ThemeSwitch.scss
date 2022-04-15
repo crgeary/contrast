@@ -13,22 +13,22 @@
     &__indicator {
         width: $size;
         height: $size;
-        background-color: #2C7A7B;
+        background-color: #2c7a7b;
         display: block;
-        transition: transform .2s ease;
+        transition: transform 0.2s ease;
         border-radius: 9999px;
     }
 
-    input[type="checkbox"]:checked + &__indicator {
+    input[type='checkbox']:checked + &__indicator {
         transform: translateX(100%);
     }
 }
 
 .app--dark {
     .theme-switch {
-        background-color: #2D3748;
+        background-color: #2d3748;
         &__indicator {
-            background-color: #38B2AC;
+            background-color: #38b2ac;
         }
     }
 }
