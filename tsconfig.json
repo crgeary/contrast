@@ -9,7 +9,6 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "allowJs": true,
     "jsx": "react",
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
