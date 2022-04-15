@@ -1,152 +1,166 @@
 .range-slider {
-    margin-top: 25px;
-    height: 50px;
-    padding-top: (50px - 26px);
+  margin-top: 25px;
+  height: 50px;
+  padding-top: (50px - 26px);
 
-    &__control {
-        position: relative;
-        height: 28px;
+  &__control {
+    position: relative;
+    height: 28px;
 
-        input[type="range"] {
-            appearance: none;
-            width: 100%;
-            background: transparent;
-            position: relative;
-            z-index: 10;
+    input[type="range"] {
+      appearance: none;
+      width: 100%;
+      background: transparent;
+      position: relative;
+      z-index: 10;
 
-            &::-webkit-slider-thumb {
-                appearance: none;
-            }
+      &::-webkit-slider-thumb {
+        appearance: none;
+      }
 
-            &:focus {
-                outline: none;
-            }
+      &:focus {
+        outline: none;
+      }
 
-            @mixin thumb() {
-                border: none;
-                height: 26px;
-                width: 16px;
-                border-radius: 2px;
-                background: #2C7A7B;
-                cursor: grab;
-                margin-top: -8px;
-                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            }
-
-            &::-webkit-slider-thumb { @include thumb(); }
-            &::-moz-range-thumb { @include thumb(); }
-            &::-ms-thumb { @include thumb(); }
-
-            @mixin track() {
-                width: 100%;
-                height: 10px;
-                border: none;
-                border-radius: 2px;
-                background-color: #A0AEC0;
-            }
-
-            &::-webkit-slider-runnable-track {
-                @include track();
-            }
-
-            &::-moz-range-track {
-                @include track();
-            }
-        }
-    }
-
-    &__current, &__indicator {
-        position: absolute;
-        font-size: 11px;
-        font-weight: bold;
-        line-height: 1;
-        border-radius: 2px;
-        bottom: calc(100% + 5px);
-        text-align: center;
+      @mixin thumb() {
         border: none;
+        height: 26px;
+        width: 16px;
+        border-radius: 2px;
+        background: #2c7a7b;
+        cursor: grab;
+        margin-top: -8px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      }
+
+      &::-webkit-slider-thumb {
+        @include thumb();
+      }
+      &::-moz-range-thumb {
+        @include thumb();
+      }
+      &::-ms-thumb {
+        @include thumb();
+      }
+
+      @mixin track() {
+        width: 100%;
+        height: 10px;
+        border: none;
+        border-radius: 2px;
+        background-color: #a0aec0;
+      }
+
+      &::-webkit-slider-runnable-track {
+        @include track();
+      }
+
+      &::-moz-range-track {
+        @include track();
+      }
+    }
+  }
+
+  &__current,
+  &__indicator {
+    position: absolute;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1;
+    border-radius: 2px;
+    bottom: calc(100% + 5px);
+    text-align: center;
+    border: none;
+  }
+
+  &__current {
+    background-color: #234e52;
+    z-index: 10;
+    color: #ffffff;
+    width: 40px;
+    padding: 4px 6px;
+  }
+
+  &__indicator {
+    background-color: #cbd5e0;
+    z-index: 5;
+    cursor: pointer;
+    padding: 4px 6px;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 15px;
+      width: 2px;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%);
+      background-color: inherit;
     }
 
-    &__current {
-        background-color: #234E52;
-        z-index: 10;
-        color: #ffffff;
-        width: 40px;
-        padding: 4px 6px;
+    &--3\:1 {
+      left: calc(((3 / 21) * 100%) - 10px);
+    }
+    &--4\.5\:1 {
+      left: calc(((4.5 / 21) * 100%) - 14px);
+    }
+    &--7\:1 {
+      left: calc(((7 / 21) * 100%) - 10px);
     }
 
-    &__indicator {
-        background-color: #CBD5E0;
-        z-index: 5;
-        cursor: pointer;
-        padding: 0;
-
-        & > div {
-            padding: 4px 6px;
-        }
-        
-
-        &::after {
-            content: '';
-            display: block;
-            height: 15px;
-            width: 2px;
-            position: absolute;
-            left: 50%;
-            top: 100%;
-            transform: translateX(-50%);
-            background-color: inherit;
-        }
-
-        &--3\:1 {
-            left: calc(((3/21)*100%) - 10px);
-        }
-        &--4\.5\:1 {
-            left: calc(((4.5/21)*100%) - 14px);
-        }
-        &--7\:1 {
-            left: calc(((7/21)*100%) - 10px);
-        }
-
-        &:hover, &:focus {
-            outline: none;
-            background-color: #A0AEC0;
-        }
+    &:hover,
+    &:focus {
+      outline: none;
+      background-color: #a0aec0;
     }
+  }
 
-    @media screen and (max-width: 767px) {
-       //display: none;
-    }
+  @media screen and (max-width: 767px) {
+    //display: none;
+  }
 }
 
 .react-tooltip-lite {
-    background: #4A5568;
-    color: white;
-    font-size: 12px;
-    line-height: 1;
-    padding: 3px 10px;
-    border-radius: 2px;
-    font-weight: 600;
+  background: #4a5568;
+  color: white;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-weight: 600;
 }
 
 .react-tooltip-lite-arrow {
-    border-color: #4A5568;
+  border-color: #4a5568;
 }
 
 .app--dark {
-    .range-slider {
-        &__control {
-            input[type="range"] {
-                &::-webkit-slider-thumb { background-color: #38B2AC; }
-                &::-moz-range-thumb { background-color: #38B2AC; }
-                &::-ms-thumb { background-color: #38B2AC; }
-                
-                &::-webkit-slider-runnable-track { background-color: #4A5568; }
-                &::-moz-range-track { background-color: #4A5568; }
-            }
+  .range-slider {
+    &__control {
+      input[type="range"] {
+        &::-webkit-slider-thumb {
+          background-color: #38b2ac;
         }
-        &__indicator {
-            background-color: #4A5568;
-            color: #FFFFFF;
+        &::-moz-range-thumb {
+          background-color: #38b2ac;
         }
+        &::-ms-thumb {
+          background-color: #38b2ac;
+        }
+
+        &::-webkit-slider-runnable-track {
+          background-color: #4a5568;
+        }
+        &::-moz-range-track {
+          background-color: #4a5568;
+        }
+      }
     }
+    &__indicator {
+      background-color: #4a5568;
+      color: #ffffff;
+    }
+  }
 }
