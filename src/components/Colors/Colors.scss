@@ -26,8 +26,8 @@
         height: 28px;
         margin-left: 4px;
         border-radius: 2px;
-        border: 1px solid rgba(#000000, .1);
-        box-shadow: 0 1px 3px rgba(#000000, .075);
+        border: 1px solid rgba(#000000, 0.1);
+        box-shadow: 0 1px 3px rgba(#000000, 0.075);
         padding: 0 8px 0 0;
         flex: 0 0 auto;
         margin-bottom: 4px;
@@ -36,10 +36,10 @@
         font-family: monospace;
 
         &--light {
-            color: #1A202C;
+            color: #1a202c;
         }
         &--dark {
-            color: #F7FAFC;
+            color: #f7fafc;
         }
     }
 
@@ -47,7 +47,7 @@
         background-color: transparent;
         padding: 0 4px;
         border: 0;
-        border-right: 1px solid rgba(#000, .2);
+        border-right: 1px solid rgba(#000, 0.2);
         margin: -1px 5px -1px -1px;
         color: inherit;
         display: flex;

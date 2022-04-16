@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-import SR from '../SR/SR';
+import { SR } from '../SR/SR';
 
 import './ThemeSwitch.scss';
 
-export default function ThemeSwitch ({ doDarkModeToggle }) {
+type ThemeSwitchProps = {
+    doDarkModeToggle: () => void;
+};
+
+export const ThemeSwitch: FC<ThemeSwitchProps> = ({ doDarkModeToggle }) => {
     return (
         <label className="theme-switch" htmlFor="theme">
             <input type="checkbox" id="theme" className="sr" onChange={doDarkModeToggle} />
@@ -12,4 +16,4 @@ export default function ThemeSwitch ({ doDarkModeToggle }) {
             <SR>Dark Mode</SR>
         </label>
     );
-}
+};

@@ -1,17 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
-import Swatch from '../Swatch/Swatch';
+import { Swatch } from '../Swatch/Swatch';
+import { SwatchColor } from '../../types/SwatchColor';
 
-import './swatches.scss';
 import canvas from '../../images/canvas.svg';
 
-function Swatches ({ colors, doColorSwatchClick, colorsTotal, minContrast }) {
+import './swatches.scss';
+
+type SwatchesProps = {
+    colors: SwatchColor[];
+    colorsTotal: number;
+    minContrast: number;
+    doColorSwatchClick: (color: SwatchColor) => void;
+};
+
+export const Swatches: FC<SwatchesProps> = ({
+    colors,
+    colorsTotal,
+    minContrast,
+    doColorSwatchClick,
+}) => {
     return (
         <div className="swatches">
             {colors.length >= 2 ? (
                 <>
-                    <p className="swatches__info">Showing {colors.length} of {colorsTotal * (colorsTotal - 1)} combinations where contrast ratio is at least {minContrast}</p>
+                    <p className="swatches__info">
+                        Showing {colors.length} of {colorsTotal * (colorsTotal - 1)} combinations
+                        where contrast ratio is at least {minContrast}
+                    </p>
                     <div className="swatches__swatches">
                         {colors.map((color, k) => (
                             <div className="swatches__swatch" key={k}>
@@ -28,13 +44,6 @@ function Swatches ({ colors, doColorSwatchClick, colorsTotal, minContrast }) {
                     <img src={canvas} alt="Lady staring at a blank canvas" />
                 </div>
             )}
-            
         </div>
     );
-}
-
-Swatches.propTypes = {
-    colors: PropTypes.array.isRequired,
 };
-
-export default Swatches;
