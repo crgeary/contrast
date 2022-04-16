@@ -1,7 +1,6 @@
 import React, { ChangeEventHandler, FC, useCallback, useEffect, useState } from 'react';
 import tinycolor, { Instance } from 'tinycolor2';
 import { hex } from 'wcag-contrast';
-import ReactGA from 'react-ga';
 
 import { Swatches } from './components/Swatches/Swatches';
 import { Picker } from './components/Picker/Picker';
@@ -43,10 +42,6 @@ export const App: FC<AppProps> = () => {
         setColors((v) => v.filter((c) => c !== color));
     };
     const doDarkModeToggle = () => {
-        ReactGA.event({
-            category: `UI`,
-            action: `Enabled ${isDark ? `Light` : `Dark`} Mode`,
-        });
         setIsDark((v) => !v);
     };
     const doColorSwatchClick = (color: SwatchColor) => {
