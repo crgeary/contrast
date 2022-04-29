@@ -3,8 +3,8 @@ import React, { FC } from 'react';
 import { Swatch } from '../Swatch/Swatch';
 import { SwatchColor } from '../../types/SwatchColor';
 
-import Canvas from './canvas.svg';
 import styled from 'styled-components';
+import { NoColorsGraphic } from '../NoColorsGraphic';
 
 type SwatchesProps = {
     colors: SwatchColor[];
@@ -40,7 +40,7 @@ export const Swatches: FC<SwatchesProps> = ({
                     {colors.length < 2 ? (
                         <SwatchesError>Please add at least 2 colors.</SwatchesError>
                     ) : null}
-                    <Canvas />
+                    <NoColorsGraphic />
                 </SwatchesNone>
             )}
         </StyledSwatches>

@@ -1,0 +1,1 @@
+export { NoColorsGraphic } from './NoColorsGraphic';
