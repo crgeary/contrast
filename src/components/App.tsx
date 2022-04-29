@@ -2,20 +2,19 @@ import React, { ChangeEventHandler, FC, useCallback, useEffect, useState } from 
 import tinycolor, { Instance } from 'tinycolor2';
 import { hex } from 'wcag-contrast';
 
-import { Swatches } from './components/Swatches/Swatches';
-import { Picker } from './components/Picker/Picker';
-import { Header } from './components/Header/Header';
-import { HeaderDescription } from './components/Header/HeaderDescription';
-import { Footer } from './components/Footer/Footer';
-import { Logo } from './components/Logo/Logo';
-import { Popup } from './components/Popup/Popup';
-import { Colors } from './components/Colors/Colors';
-import { SwatchDetail } from './components/SwatchDetail/SwatchDetail';
-import { RangeSlider } from './components/RangeSlider/RangeSlider';
-import { Controls } from './components/Controls/Controls';
+import { Swatches } from './Swatches/Swatches';
+import { Picker } from './Picker/Picker';
+import { Header } from './Header/Header';
+import { HeaderDescription } from './Header/HeaderDescription';
+import { Footer } from './Footer/Footer';
+import { Logo } from './Logo/Logo';
+import { Popup } from './Popup/Popup';
+import { Colors } from './Colors/Colors';
+import { SwatchDetail } from './SwatchDetail/SwatchDetail';
+import { RangeSlider } from './RangeSlider/RangeSlider';
+import { Controls } from './Controls/Controls';
 
-import './app.scss';
-import { SwatchColor } from './types/SwatchColor';
+import { SwatchColor } from '../types/SwatchColor';
 
 type AppProps = {};
 

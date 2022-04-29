@@ -1,16 +1,14 @@
-import cn from 'classnames';
 import React, { ComponentPropsWithoutRef, FC } from 'react';
+import styled from 'styled-components';
 
-import './Controls.scss';
-
-export const Controls: FC<ComponentPropsWithoutRef<'div'>> = ({
-    className,
-    children,
-    ...props
-}) => {
+export const Controls: FC<ComponentPropsWithoutRef<'div'>> = ({ children, ...props }) => {
     return (
-        <div className={cn('controls', className)} {...props}>
+        <StyledControls {...props}>
             <div className="container">{children}</div>
-        </div>
+        </StyledControls>
     );
 };
+
+const StyledControls = styled.div`
+    margin-bottom: 50px;
+`;

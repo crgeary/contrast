@@ -1,16 +1,11 @@
 import React, { ChangeEventHandler, FC, FormEventHandler, useState } from 'react';
 import { ColorChangeHandler, SketchPicker } from 'react-color';
+import styled from 'styled-components';
 import tinycolor from 'tinycolor2';
 
 import { Button } from '../Button/Button';
-
-import './Picker.scss';
-
-const colorIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-        <path d="M204.3 5C104.9 24.4 24.8 104.3 5.2 203.4c-37 187 131.7 326.4 258.8 306.7 41.2-6.4 61.4-54.6 42.5-91.7-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.3C511.5 97.1 368.1-26.9 204.3 5zM96 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm32-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path>
-    </svg>
-);
+import { SR } from '../SR/SR';
+import { Color } from './icons/Color';
 
 type PickerProps = {
     doNewColor: (color: string) => void;
@@ -37,29 +32,26 @@ export const Picker: FC<PickerProps> = ({ doNewColor }) => {
     };
 
     return (
-        <form className="picker" onSubmit={doNewColorSubmit}>
-            <div className="picker__input">
+        <StyledPicker onSubmit={doNewColorSubmit}>
+            <PickerInput>
                 <input
                     type="text"
                     placeholder="Hex/RGB"
                     onChange={doInputChange}
                     value={currentColor}
                 />
-                <button type="button" className="picker__swatch" onClick={doColorPickerToggle}>
-                    {colorIcon}
-                    <span className="sr">Color Picker</span>
-                </button>
-                <div
-                    className="picker__colorpicker"
-                    style={{ display: showColorPicker ? `block` : `none` }}
-                >
+                <PickerSwatch type="button" onClick={doColorPickerToggle}>
+                    <Color />
+                    <SR>Color Picker</SR>
+                </PickerSwatch>
+                <PickerColorPicker style={{ display: showColorPicker ? `block` : `none` }}>
                     <SketchPicker
                         color={currentColor}
                         onChange={doColorPickerChange}
                         disableAlpha={true}
                     />
-                </div>
-            </div>
+                </PickerColorPicker>
+            </PickerInput>
             <Button
                 style={{
                     backgroundColor: currentColor,
@@ -69,6 +61,81 @@ export const Picker: FC<PickerProps> = ({ doNewColor }) => {
             >
                 Add Color
             </Button>
-        </form>
+        </StyledPicker>
     );
 };
+
+const StyledPicker = styled.form`
+    display: flex;
+    margin: 0 auto;
+    max-width: 520px;
+    background-color: #ffffff;
+    padding: 3px;
+    border: 1px solid #cbd5e0;
+    border-radius: 2px;
+`;
+
+const PickerColorPicker = styled.div`
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    z-index: 20;
+`;
+
+const PickerSwatch = styled.button`
+    border: none;
+    background-color: transparent;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #718096;
+    cursor: pointer;
+    margin: 0 5px;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+`;
+
+const PickerInput = styled.div`
+    display: flex;
+    flex: 1 1 auto;
+    border-radius: 2px;
+    position: relative;
+
+    input[type='text'] {
+        background-color: #ffffff;
+        border: none;
+        margin: 0;
+        height: 100%;
+        flex: 1 1 auto;
+        font-size: 20px;
+        padding: 7px 10px;
+        width: 100%;
+    }
+`;
+
+/*
+
+
+.app--dark {
+    .picker {
+        border-color: #4a5568;
+        background-color: #2d3748;
+
+        &__input {
+            input[type='text'] {
+                background-color: #2d3748;
+                color: #f7fafc;
+
+                &::placeholder {
+                    color: #a0aec0;
+                }
+            }
+        }
+    }
+}
+
+*/

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
+import styled from 'styled-components';
 import { SwatchColor } from '../../types/SwatchColor';
-
-import './SwatchDetail.scss';
+import { getConformanceLevel } from '../../utils/contrast';
 
 type SwatchDetailProps = {
     color: SwatchColor;
@@ -9,40 +9,25 @@ type SwatchDetailProps = {
 
 export const SwatchDetail: FC<SwatchDetailProps> = ({ color }) => {
     const contrast = Math.floor(color.contrast * 100) / 100;
-
-    let score = null,
-        scoreLarge = null;
-
-    if (contrast >= 4.5 && contrast < 7) {
-        score = `AA`;
-    } else if (contrast >= 7) {
-        score = `AAA`;
-    }
-
-    if (contrast >= 3 && contrast < 4.5) {
-        scoreLarge = `AA`;
-    } else if (contrast >= 4.5) {
-        scoreLarge = `AAA`;
-    }
+    const { regular: score, large: scoreLarge } = getConformanceLevel(contrast);
 
     return (
-        <div className="swatch-detail">
-            <div
-                className="swatch-detail__preview"
+        <StyledSwatchDetail className="swatch-detail">
+            <SwatchDetailPreview
                 style={{
                     backgroundColor: color.backgroundColor.toHexString(),
                     color: color.textColor.toHexString(),
                 }}
             >
-                <p className="swatch-detail__text swatch-detail__text--large">Abc</p>
-                <p className="swatch-detail__text swatch-detail__text--medium">
+                <SwatchDetailText $size="large">Abc</SwatchDetailText>
+                <SwatchDetailText $size="regular">
                     The quick brown fox jumped over the lazy dog
-                </p>
-                <p className="swatch-detail__text swatch-detail__text--small">
+                </SwatchDetailText>
+                <SwatchDetailText $size="small">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
                     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                </SwatchDetailText>
                 <div className="swatch-detail__icons">
                     <svg
                         aria-hidden="true"
@@ -105,57 +90,213 @@ export const SwatchDetail: FC<SwatchDetailProps> = ({ color }) => {
                         ></path>
                     </svg>
                 </div>
-            </div>
+            </SwatchDetailPreview>
 
-            <div className="swatch-detail__content">
-                <div className="swatch-detail__details">
+            <SwatchDetailContent>
+                <SwatchDetailDetails>
                     <div className="swatch-detail__detail">
                         <h3>Contrast Ratio</h3>
                         <p>{contrast}</p>
                     </div>
-                    <div className="swatch-detail__group">
-                        <div className="swatch-detail__detail">
+                    <SwatchDetailGroup>
+                        <div>
                             <h3>Foreground</h3>
                             <p>{color.textColor.toHexString()}</p>
                         </div>
-                        <div className="swatch-detail__detail">
+                        <div>
                             <h3>Background</h3>
                             <p>{color.backgroundColor.toHexString()}</p>
                         </div>
-                    </div>
-                </div>
+                    </SwatchDetailGroup>
+                </SwatchDetailDetails>
 
-                <div className="swatch-detail__a11y">
-                    <div className="swatch-detail__level">
-                        <div className="swatch-detail__level-label">
+                <SwatchDetailA11y>
+                    <SwatchDetailLevel>
+                        <SwatchDetailLevelLabel>
                             <h3>Normal</h3>
                             <p>Contrast ratio must be at least 4.5:1 for AA, and 7:1 for AAA.</p>
-                        </div>
-                        <div
-                            className={`swatch-detail__level-score swatch-detail__level-score--${
-                                score ? `pass` : `fail`
-                            }`}
-                        >
+                        </SwatchDetailLevelLabel>
+                        <SwatchDetailLevelScore $variant={score ? `pass` : `fail`}>
                             <strong>{score || `X`}</strong>
                             <span>{score ? `Pass` : `Fail`}</span>
-                        </div>
-                    </div>
-                    <div className="swatch-detail__level">
-                        <div className="swatch-detail__level-label">
+                        </SwatchDetailLevelScore>
+                    </SwatchDetailLevel>
+                    <SwatchDetailLevel>
+                        <SwatchDetailLevelLabel>
                             <h3>Large (24px +)</h3>
                             <p>Contrast ratio must be at least 3:1 for AA, and 4.5:1 for AAA.</p>
-                        </div>
-                        <div
-                            className={`swatch-detail__level-score swatch-detail__level-score--${
-                                scoreLarge ? `pass` : `fail`
-                            }`}
-                        >
+                        </SwatchDetailLevelLabel>
+                        <SwatchDetailLevelScore $variant={scoreLarge ? `pass` : `fail`}>
                             <strong>{scoreLarge || `X`}</strong>
                             <span>{scoreLarge ? `Pass` : `Fail`}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </SwatchDetailLevelScore>
+                    </SwatchDetailLevel>
+                </SwatchDetailA11y>
+            </SwatchDetailContent>
+        </StyledSwatchDetail>
     );
 };
+
+const StyledSwatchDetail = styled.div`
+    font-size: 14px;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+    }
+`;
+
+const SwatchDetailPreview = styled.div`
+    padding: 25px;
+    margin: -25px -25px 25px -25px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+
+    svg {
+        width: 32px;
+        margin-right: 5px;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 60%;
+        margin: 0;
+        border-radius: 2px;
+    }
+`;
+
+const SwatchDetailText = styled.p<{ $size: 'small' | 'regular' | 'large' }>`
+    display: block;
+    font-weight: 600;
+    margin-bottom: 15px;
+
+    ${({ $size }) => {
+        if ($size === 'large') {
+            return `
+                font-size: 64px;
+                line-height: 1.1;
+            `;
+        }
+        if ($size === 'regular') {
+            return `
+                font-size: 24px;
+                line-height: 1.25;
+            `;
+        }
+        if ($size === 'small') {
+            return `font-size: 16px;`;
+        }
+    }}
+`;
+
+const SwatchDetailDetails = styled.div`
+    h3 {
+        margin-bottom: 0;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 400;
+        color: #718096;
+    }
+    p {
+        font-size: 24px;
+        font-weight: 600;
+        color: #1a202c;
+    }
+`;
+
+const SwatchDetailGroup = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const SwatchDetailContent = styled.div`
+    @media screen and (min-width: 768px) {
+        width: 40%;
+        padding-left: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+`;
+
+const SwatchDetailA11y = styled.div`
+    @media screen and (min-width: 768px) {
+        margin-top: auto;
+    }
+`;
+
+const SwatchDetailLevel = styled.div`
+    font-size: 12px;
+    display: flex;
+    border-top: 1px solid #cbd5e0;
+    border-radius: 2px;
+    padding: 10px 0;
+`;
+
+const SwatchDetailLevelLabel = styled.div`
+    flex: 1 1 auto;
+    h3 {
+        color: #1a202c;
+        font-size: 14px;
+    }
+    h3,
+    p {
+        margin-bottom: 0;
+    }
+`;
+
+const SwatchDetailLevelScore = styled.div<{ $variant: 'pass' | 'fail' }>`
+    width: 100px;
+    border-left: 1px solid #cbd5e0;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    strong,
+    span {
+        display: block;
+    }
+    strong {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    span {
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    ${({ $variant }) => `
+        color: ${$variant === 'pass' ? '#276749' : null};
+        color: ${$variant === 'fail' ? '#9b2c2c' : null};
+    `}
+`;
+
+/*
+
+.app--dark {
+    .swatch-detail {
+        &__detail {
+            p {
+                color: #edf2f7;
+            }
+        }
+        &__level {
+            border-top-color: #4a5568;
+            color: #718096;
+            &-score {
+                border-left-color: #4a5568;
+                &--fail {
+                    color: #f56565;
+                }
+                &--pass {
+                    color: #48bb78;
+                }
+            }
+            h3 {
+                color: #edf2f7;
+            }
+        }
+    }
+}
+
+*/

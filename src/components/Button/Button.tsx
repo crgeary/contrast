@@ -1,8 +1,23 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
-import cn from 'classnames';
+import styled from 'styled-components';
 
-import './Button.scss';
-
-export const Button: FC<ComponentPropsWithoutRef<'button'>> = ({ className, ...props }) => {
-    return <button type="submit" className={cn('button button--primary', className)} {...props} />;
+export const Button: FC<ComponentPropsWithoutRef<'button'>> = (props) => {
+    return <StyledButton type="submit" {...props} />;
 };
+
+const StyledButton = styled.button`
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+    padding: 8px 20px;
+    line-height: 1;
+    background-color: #718096;
+    color: #ffffff;
+
+    [disabled] {
+        opacity: 0.35;
+        cursor: not-allowed;
+    }
+`;

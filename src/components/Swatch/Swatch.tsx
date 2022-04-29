@@ -1,118 +1,186 @@
-import React, { FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
+import styled from 'styled-components';
 import { SwatchColor } from '../../types/SwatchColor';
+import { getConformanceLevel } from '../../utils/contrast';
+import { Check } from './icons/Check';
+import { Cross } from './icons/Cross';
+import { Info } from './icons/Info';
 
-import './swatch.scss';
-
-const crossIcon = (
-    <svg
-        aria-hidden="true"
-        focusable="false"
-        role="img"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 320 512"
-    >
-        <path
-            fill="currentColor"
-            d="M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34 0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58 0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58 0L4.68 125.7c-6.23 6.23-6.23 16.34 0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34 0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58 0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58 0l25.03-25.03c6.23-6.23 6.23-16.34 0-22.58L207.6 256z"
-        ></path>
-    </svg>
-);
-const checkIcon = (
-    <svg
-        aria-hidden="true"
-        focusable="false"
-        role="img"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-    >
-        <path
-            fill="currentColor"
-            d="M435.848 83.466L172.804 346.51l-96.652-96.652c-4.686-4.686-12.284-4.686-16.971 0l-28.284 28.284c-4.686 4.686-4.686 12.284 0 16.971l133.421 133.421c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-28.284-28.284c-4.686-4.686-12.284-4.686-16.97 0z"
-        ></path>
-    </svg>
-);
-
-type SwatchProps = {
+type SwatchProps = Omit<ComponentPropsWithoutRef<'button'>, 'color'> & {
     color: SwatchColor;
     doColorSwatchClick: (color: SwatchColor) => void;
 };
 
-export const Swatch: FC<SwatchProps> = ({ color, doColorSwatchClick }) => {
+export const Swatch: FC<SwatchProps> = ({ color, doColorSwatchClick, ...props }) => {
     const contrast = Math.floor(color.contrast * 100) / 100;
-    let score = null,
-        scoreLarge = null;
-
-    if (contrast >= 4.5 && contrast < 7) {
-        score = `AA`;
-    } else if (contrast >= 7) {
-        score = `AAA`;
-    }
-
-    if (contrast >= 3 && contrast < 4.5) {
-        scoreLarge = `AA`;
-    } else if (contrast >= 4.5) {
-        scoreLarge = `AAA`;
-    }
+    const { regular: score, large: scoreLarge } = getConformanceLevel(contrast);
 
     return (
-        <button className="swatch" onClick={() => doColorSwatchClick(color)}>
-            <span
-                className="swatch__preview"
+        <StyledSwatch onClick={() => doColorSwatchClick(color)} {...props}>
+            <SwatchPreview
                 style={{
                     backgroundColor: color.backgroundColor.toHexString(),
                     color: color.textColor.toHexString(),
                 }}
             >
-                <span
-                    className={`swatch__text swatch__text--small${
-                        score ? `` : ` swatch__text--strike`
-                    }`}
-                >
+                <SwatchText $size="regular" $isStrike={!score}>
                     Abc
-                </span>
-                <span
-                    className={`swatch__text swatch__text--large${
-                        scoreLarge ? `` : ` swatch__text--strike`
-                    }`}
-                >
+                </SwatchText>
+                <SwatchText $size="large" $isStrike={!scoreLarge}>
                     Abc
-                </span>
-                <span className="swatch__scores">
-                    <span className={`swatch__score swatch__score--${score ? `pass` : `fail`}`}>
-                        {score ? checkIcon : crossIcon}
+                </SwatchText>
+                <SwatchScores>
+                    <SwatchScore $variant={score ? `pass` : `fail`}>
+                        {score ? <Check /> : <Cross />}
                         <span>Small</span>
                         <strong>{score || `Fail`}</strong>
-                    </span>
-                    <span
-                        className={`swatch__score swatch__score--${scoreLarge ? `pass` : `fail`}`}
-                    >
-                        {scoreLarge ? checkIcon : crossIcon}
+                    </SwatchScore>
+                    <SwatchScore $variant={scoreLarge ? `pass` : `fail`}>
+                        {scoreLarge ? <Check /> : <Cross />}
                         <span>Large</span>
                         <strong>{scoreLarge || `Fail`}</strong>
-                    </span>
-                </span>
-            </span>
-            <div className="swatch__body">
-                <div className="swatch__contrast">
+                    </SwatchScore>
+                </SwatchScores>
+            </SwatchPreview>
+            <SwatchBody>
+                <SwatchContrast>
                     Contrast
                     <strong>{contrast}:1</strong>
-                </div>
-
-                <svg
-                    className="swatch__info"
-                    aria-hidden="true"
-                    width="20"
-                    focusable="false"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                >
-                    <path
-                        fill="currentColor"
-                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"
-                    ></path>
-                </svg>
-            </div>
-        </button>
+                </SwatchContrast>
+                <SwatchInfo />
+            </SwatchBody>
+        </StyledSwatch>
     );
 };
+
+const StyledSwatch = styled.button`
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    line-height: 1.25;
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    border: none;
+
+    &:hover,
+    &:focus {
+        transform: scale(1.25);
+        z-index: 10;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+`;
+
+const SwatchInfo = styled(Info)`
+    color: #4a5568;
+    transition: transform 0.2s ease;
+`;
+
+const SwatchPreview = styled.span`
+    padding: 15px;
+    display: block;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    position: relative;
+`;
+
+const SwatchContrast = styled.span`
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 1.25;
+    color: #a0aec0;
+    strong {
+        font-size: 16px;
+        display: block;
+        color: #2d3748;
+    }
+`;
+
+const SwatchBody = styled.div`
+    padding: 13px 15px;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const SwatchScores = styled.span`
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 62px;
+    bottom: 5px;
+    font-size: 8px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #1a202c;
+`;
+
+const SwatchText = styled.span<{ $size: 'regular' | 'large'; $isStrike: boolean }>`
+    display: block;
+    font-size: ${({ $size }) => ($size === 'large' ? '26px' : null)};
+    text-decoration: ${({ $isStrike }) => ($isStrike ? 'line-through' : null)};
+`;
+
+const SwatchScore = styled.span<{ $variant: 'pass' | 'fail' }>`
+    position: relative;
+    background-color: rgb(255, 255, 255, 0.875);
+    padding: 5px 5px 5px 26px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgb(0, 0, 0, 0.1);
+
+    span {
+        letter-spacing: 0.2px;
+        opacity: 0.75;
+    }
+    strong {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.75px;
+    }
+    svg {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+    }
+
+    ${({ $variant }) => `
+        svg {
+            color: ${$variant === 'pass' ? '#276749' : null};
+            color: ${$variant === 'fail' ? '#9b2c2c' : null};
+        }
+    `}
+`;
+
+/*
+
+.app--dark {
+    .swatch {
+        background-color: #2d3748;
+
+        &__contrast {
+            strong {
+                color: #f7fafc;
+            }
+        }
+
+        &__info {
+            color: #cbd5e0;
+        }
+        &:hover &__info,
+        &:focus &__info {
+            color: #edf2f7;
+        }
+    }
+}
+
+*/

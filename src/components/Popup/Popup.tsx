@@ -1,8 +1,6 @@
 import React, { FC, ReactNode } from 'react';
-
+import styled from 'styled-components';
 import { SR } from '../SR/SR';
-
-import './Popup.scss';
 
 type PopupProps = {
     children: ReactNode;
@@ -11,11 +9,11 @@ type PopupProps = {
 
 export const Popup: FC<PopupProps> = ({ children, closePopup }) => {
     return (
-        <div className="popup">
-            <div className="popup__backface" onClick={closePopup}></div>
-            <div className="popup__window">
+        <StyledPopup>
+            <PopupBackface onClick={closePopup}></PopupBackface>
+            <PopupWindow>
                 {children}
-                <button onClick={closePopup} className="popup__close">
+                <PopupClose onClick={closePopup}>
                     <svg
                         aria-hidden="true"
                         focusable="false"
@@ -29,8 +27,72 @@ export const Popup: FC<PopupProps> = ({ children, closePopup }) => {
                         ></path>
                     </svg>
                     <SR>Close</SR>
-                </button>
-            </div>
-        </div>
+                </PopupClose>
+            </PopupWindow>
+        </StyledPopup>
     );
 };
+
+const StyledPopup = styled.div`
+    position: fixed;
+    z-index: 20;
+    display: flex;
+    padding: 100px 25px;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+`;
+
+const PopupBackface = styled.div`
+    background-color: rgba(74, 85, 104, 0.85);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    position: fixed;
+`;
+
+const PopupWindow = styled.div`
+    background-color: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 750px;
+    padding: 25px;
+    width: 100%;
+    position: relative;
+    z-index: 50;
+    margin: auto;
+`;
+
+const PopupClose = styled.button`
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    cursor: pointer;
+    color: rgba(#ffffff, 0.65);
+
+    & > svg {
+        width: 32px;
+        height: 32px;
+    }
+`;
+
+/*
+
+.app--dark {
+    .popup {
+        background-color: rgba(#1a202c, 0.85);
+        &__window {
+            background-color: #2d3748;
+        }
+    }
+}
+
+*/
