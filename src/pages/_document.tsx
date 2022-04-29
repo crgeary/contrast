@@ -9,10 +9,6 @@ class MyDocument extends Document {
                         rel="stylesheet"
                         href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap"
                     />
-                    <link
-                        rel="stylesheet"
-                        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-                    />
                     <link rel="shortcut icon" href="/images/favicon.png" />
                 </Head>
                 <body>

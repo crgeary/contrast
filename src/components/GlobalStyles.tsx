@@ -1,13 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
-    * {
-        box-sizing: border-box;
-    }
-
-    svg {
-        fill: currentColor;
-    }
 
     body,
     #__next,
@@ -15,7 +7,9 @@ export const GlobalStyles = createGlobalStyle`
         min-height: 100vh;
         height: 100%;
     }
+import '../../node_modules/modern-normalize/modern-normalize.css';
 
+export const GlobalStyles = createGlobalStyle`
     body {
         line-height: 1.65;
         font-family: 'Open Sans', Helvetica, Arial, sans-serif;
