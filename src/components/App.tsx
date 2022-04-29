@@ -7,7 +7,7 @@ import { Picker } from './Picker/Picker';
 import { Header } from './Header/Header';
 import { HeaderDescription } from './Header/HeaderDescription';
 import { Footer } from './Footer/Footer';
-import { Logo } from './Logo/Logo';
+import { Logo } from './Logo';
 import { Popup } from './Popup/Popup';
 import { Colors } from './Colors/Colors';
 import { SwatchDetail } from './SwatchDetail/SwatchDetail';
