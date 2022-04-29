@@ -1,14 +1,16 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 import styled from 'styled-components';
 
+import { Container } from '../Container';
+
 export const Controls: FC<ComponentPropsWithoutRef<'div'>> = ({ children, ...props }) => {
     return (
-        <StyledControls {...props}>
-            <div className="container">{children}</div>
-        </StyledControls>
+        <Wrapper {...props}>
+            <Container>{children}</Container>
+        </Wrapper>
     );
 };
 
-const StyledControls = styled.div`
+const Wrapper = styled.div`
     margin-bottom: 50px;
 `;

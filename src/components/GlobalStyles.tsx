@@ -65,14 +65,4 @@ export const GlobalStyles = createGlobalStyle`
                 url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232D3748' fill-opacity='.25' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
         }
     }
-
-    .container {
-        max-width: 980px;
-        padding: 0 20px;
-        margin: 0 auto;
-
-        &--wide {
-            max-width: 1440px;
-        }
-    }
 `;

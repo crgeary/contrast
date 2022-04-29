@@ -1,5 +1,6 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 import styled from 'styled-components';
+import { Container } from '../Container';
 
 import { ThemeSwitch } from '../ThemeSwitch/ThemeSwitch';
 
@@ -10,10 +11,10 @@ type HeaderProps = ComponentPropsWithoutRef<'header'> & {
 export const Header: FC<HeaderProps> = ({ children, doDarkModeToggle, ...props }) => {
     return (
         <StyledHeader role="banner" {...props}>
-            <div className="container">
+            <Container>
                 <ThemeSwitch doDarkModeToggle={doDarkModeToggle} />
                 {children}
-            </div>
+            </Container>
         </StyledHeader>
     );
 };

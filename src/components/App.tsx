@@ -15,6 +15,7 @@ import { RangeSlider } from './RangeSlider/RangeSlider';
 import { Controls } from './Controls/Controls';
 
 import { SwatchColor } from '../types/SwatchColor';
+import { Container } from './Container';
 
 type AppProps = {};
 
@@ -120,14 +121,14 @@ export const App: FC<AppProps> = () => {
                     ) : null}
                 </Controls>
 
-                <div className="container container--wide">
+                <Container isWide>
                     <Swatches
                         colorsTotal={colors.length}
                         minContrast={minContrast}
                         colors={calculateColors()}
                         doColorSwatchClick={doColorSwatchClick}
                     />
-                </div>
+                </Container>
             </div>
 
             <Footer>
