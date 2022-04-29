@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import tinycolor from 'tinycolor2';
 
 import { Button } from '../Button/Button';
-import { SR } from '../SR/SR';
+import { ScreenReaderText } from '../ScreenReaderText';
 import { Color } from './icons/Color';
 
 type PickerProps = {
@@ -42,7 +42,7 @@ export const Picker: FC<PickerProps> = ({ doNewColor }) => {
                 />
                 <PickerSwatch type="button" onClick={doColorPickerToggle}>
                     <Color />
-                    <SR>Color Picker</SR>
+                    <ScreenReaderText>Color Picker</ScreenReaderText>
                 </PickerSwatch>
                 <PickerColorPicker style={{ display: showColorPicker ? `block` : `none` }}>
                     <SketchPicker

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SR = styled.span`
+export const ScreenReaderText = styled.span`
     position: absolute;
     width: 1px;
     height: 1px;

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { SR } from '../SR/SR';
+import { ScreenReaderText } from '../ScreenReaderText';
 
 type ThemeSwitchProps = {
     doDarkModeToggle: () => void;
@@ -10,9 +10,9 @@ type ThemeSwitchProps = {
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({ doDarkModeToggle, ...props }) => {
     return (
         <StyledThemeSwitch htmlFor="theme" {...props}>
-            <input type="checkbox" id="theme" className="sr" onChange={doDarkModeToggle} />
+            <input type="checkbox" id="theme" onChange={doDarkModeToggle} />
             <Indicator />
-            <SR>Dark Mode</SR>
+            <ScreenReaderText>Dark Mode</ScreenReaderText>
         </StyledThemeSwitch>
     );
 };
