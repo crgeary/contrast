@@ -16,22 +16,15 @@ import { Controls } from './Controls/Controls';
 
 import { SwatchColor } from '../types/SwatchColor';
 import { Container } from './Container';
+import { useColors } from '../hooks/useColors';
 
 type AppProps = {};
 
 export const App: FC<AppProps> = () => {
-    const [colors, setColors] = useState<string[]>([]);
+    const [colors, setColors] = useColors();
     const [isDark, setIsDark] = useState(false);
     const [currentColor, setCurrentColor] = useState<SwatchColor | null>(null);
     const [minContrast, setMinContrast] = useState(0);
-
-    const updateHash = useCallback(() => {
-        window.history.replaceState(
-            undefined,
-            '',
-            `#${colors.map((color) => tinycolor(color).toHex()).join(',')}`
-        );
-    }, [colors]);
 
     const doNewColor = (color: string) => {
         if (!colors.includes(color) && color !== '') {
@@ -75,21 +68,6 @@ export const App: FC<AppProps> = () => {
 
         return r.filter((c) => c.contrast >= minContrast);
     };
-
-    useEffect(() => {
-        if (!window.location.hash) {
-            return;
-        }
-        const colors = window.location.hash
-            .substr(1)
-            .split(',')
-            .map((h) => `#${h}`);
-        setColors(colors);
-    }, []);
-
-    useEffect(() => {
-        updateHash();
-    }, [colors, updateHash]);
 
     return (
         <div className={`app${isDark ? ` app--dark` : ``}`}>
