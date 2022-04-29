@@ -110,12 +110,10 @@ export const App: FC<AppProps> = () => {
             </div>
 
             <Footer>
-                <p>
-                    Built by{' '}
-                    <a href="https://crgeary.com" rel="noopener noreferrer" target="_blank">
-                        Christopher Geary
-                    </a>
-                </p>
+                Built by{' '}
+                <a href="https://crgeary.com" rel="noopener noreferrer" target="_blank">
+                    Christopher Geary
+                </a>
             </Footer>
         </div>
     );
