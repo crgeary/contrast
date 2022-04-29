@@ -3,9 +3,8 @@ import React, { FC } from 'react';
 import { Swatch } from '../Swatch/Swatch';
 import { SwatchColor } from '../../types/SwatchColor';
 
-import canvas from './canvas.svg';
+import Canvas from './canvas.svg';
 import styled from 'styled-components';
-import Image from 'next/image';
 
 type SwatchesProps = {
     colors: SwatchColor[];
@@ -41,7 +40,7 @@ export const Swatches: FC<SwatchesProps> = ({
                     {colors.length < 2 ? (
                         <SwatchesError>Please add at least 2 colors.</SwatchesError>
                     ) : null}
-                    <img src={canvas} alt="Lady staring at a blank canvas" />
+                    <Canvas />
                 </SwatchesNone>
             )}
         </StyledSwatches>
