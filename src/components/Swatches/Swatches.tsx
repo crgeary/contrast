@@ -41,7 +41,11 @@ export const Swatches: FC<SwatchesProps> = ({
                     {colors.length < 2 ? (
                         <SwatchesError>Please add at least 2 colors.</SwatchesError>
                     ) : null}
-                    <Image src={canvas} alt="Lady staring at a blank canvas" />
+                    <Image
+                        loader={({ src }) => src}
+                        src={canvas}
+                        alt="Lady staring at a blank canvas"
+                    />
                 </SwatchesNone>
             )}
         </StyledSwatches>

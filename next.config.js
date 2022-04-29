@@ -4,6 +4,9 @@ const nextConfig = {
     compiler: {
         styledComponents: true,
     },
+    images: {
+        loader: 'custom',
+    },
 };
 
 module.exports = nextConfig;
