@@ -17,6 +17,7 @@ export const Logo: FC<ComponentPropsWithoutRef<'a'>> = ({ ...props }) => {
 };
 
 const StyledLogo = styled.a`
+    margin-bottom: 10px;
     width: 220px;
     display: inline-block;
     color: ${({ theme }) => theme.colors.primary};
