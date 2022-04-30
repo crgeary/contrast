@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-import '../../node_modules/modern-normalize/modern-normalize.css';
+import "../../node_modules/modern-normalize/modern-normalize.css";
 
 export const GlobalStyles = createGlobalStyle`
     body,

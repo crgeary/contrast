@@ -1,7 +1,7 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import styled from 'styled-components';
+import React, { ComponentPropsWithoutRef, FC } from "react";
+import styled from "styled-components";
 
-export const HeaderDescription: FC<ComponentPropsWithoutRef<'div'>> = ({ children, ...props }) => {
+export const HeaderDescription: FC<ComponentPropsWithoutRef<"div">> = ({ children, ...props }) => {
     return (
         <StyledHeaderDescription {...props}>
             <p>{children}</p>

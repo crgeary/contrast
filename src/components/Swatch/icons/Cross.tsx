@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef, FC } from "react";
 
-export const Cross: FC<ComponentPropsWithoutRef<'svg'>> = (props) => (
+export const Cross: FC<ComponentPropsWithoutRef<"svg">> = (props) => (
     <svg
         aria-hidden="true"
         focusable="false"

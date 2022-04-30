@@ -1,5 +1,5 @@
-import React, { ChangeEventHandler, FC } from 'react';
-import styled from 'styled-components';
+import React, { ChangeEventHandler, FC } from "react";
+import styled from "styled-components";
 
 type RangeSliderProps = {
     current: number;
@@ -61,7 +61,7 @@ const RangeSliderControl = styled.div`
     position: relative;
     height: 28px;
 
-    input[type='range'] {
+    input[type="range"] {
         appearance: none;
         width: 100%;
         background: transparent;
@@ -158,7 +158,7 @@ const RangeSliderIndicator = styled.button<{ $value: number }>`
     padding: 4px 6px;
 
     &::after {
-        content: '';
+        content: "";
         display: block;
         height: 15px;
         width: 2px;

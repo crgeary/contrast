@@ -1,1 +1,1 @@
-export { ScreenReaderText } from './ScreenReaderText';
+export { ScreenReaderText } from "./ScreenReaderText";

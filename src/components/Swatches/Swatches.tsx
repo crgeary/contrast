@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
-import { Swatch } from '../Swatch/Swatch';
-import { SwatchColor } from '../../types/SwatchColor';
+import { Swatch } from "../Swatch/Swatch";
+import { SwatchColor } from "../../types/SwatchColor";
 
-import styled from 'styled-components';
-import { NoColorsGraphic } from '../NoColorsGraphic';
+import styled from "styled-components";
+import { NoColorsGraphic } from "../NoColorsGraphic";
 
 type SwatchesProps = {
     colors: SwatchColor[];

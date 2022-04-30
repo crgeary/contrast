@@ -1,10 +1,10 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import styled from 'styled-components';
-import { Container } from '../Container';
+import React, { ComponentPropsWithoutRef, FC } from "react";
+import styled from "styled-components";
+import { Container } from "../Container";
 
-import { ThemeSwitch } from '../ThemeSwitch/ThemeSwitch';
+import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
 
-type HeaderProps = ComponentPropsWithoutRef<'header'> & {
+type HeaderProps = ComponentPropsWithoutRef<"header"> & {
     doDarkModeToggle: () => void;
 };
 

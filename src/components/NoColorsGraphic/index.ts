@@ -1,1 +1,1 @@
-export { NoColorsGraphic } from './NoColorsGraphic';
+export { NoColorsGraphic } from "./NoColorsGraphic";

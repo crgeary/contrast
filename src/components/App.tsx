@@ -1,22 +1,22 @@
-import React, { ChangeEventHandler, FC, useState } from 'react';
-import tinycolor, { Instance } from 'tinycolor2';
-import { hex } from 'wcag-contrast';
+import React, { ChangeEventHandler, FC, useState } from "react";
+import tinycolor, { Instance } from "tinycolor2";
+import { hex } from "wcag-contrast";
 
-import { Swatches } from './Swatches/Swatches';
-import { Picker } from './Picker/Picker';
-import { Header } from './Header/Header';
-import { HeaderDescription } from './Header/HeaderDescription';
-import { Footer } from './Footer/Footer';
-import { Logo } from './Logo';
-import { Popup } from './Popup/Popup';
-import { Colors } from './Colors/Colors';
-import { SwatchDetail } from './SwatchDetail/SwatchDetail';
-import { RangeSlider } from './RangeSlider/RangeSlider';
-import { Controls } from './Controls/Controls';
+import { Swatches } from "./Swatches/Swatches";
+import { Picker } from "./Picker/Picker";
+import { Header } from "./Header/Header";
+import { HeaderDescription } from "./Header/HeaderDescription";
+import { Footer } from "./Footer/Footer";
+import { Logo } from "./Logo";
+import { Popup } from "./Popup/Popup";
+import { Colors } from "./Colors/Colors";
+import { SwatchDetail } from "./SwatchDetail/SwatchDetail";
+import { RangeSlider } from "./RangeSlider/RangeSlider";
+import { Controls } from "./Controls/Controls";
 
-import { SwatchColor } from '../types/SwatchColor';
-import { Container } from './Container';
-import { useColors } from '../hooks/useColors';
+import { SwatchColor } from "../types/SwatchColor";
+import { Container } from "./Container";
+import { useColors } from "../hooks/useColors";
 
 type AppProps = {};
 
@@ -27,7 +27,7 @@ export const App: FC<AppProps> = () => {
     const [minContrast, setMinContrast] = useState(0);
 
     const doNewColor = (color: string) => {
-        if (!colors.includes(color) && color !== '') {
+        if (!colors.includes(color) && color !== "") {
             setColors([...colors, color]);
         }
     };
@@ -38,7 +38,7 @@ export const App: FC<AppProps> = () => {
         setIsDark((v) => !v);
     };
     const doColorSwatchClick = (color: SwatchColor) => {
-        document.body.classList.add('body--popup');
+        document.body.classList.add("body--popup");
         setCurrentColor(color);
     };
     const doRangeSliderChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -48,7 +48,7 @@ export const App: FC<AppProps> = () => {
         setMinContrast(contrast);
     };
     const doClosePopup = () => {
-        document.body.classList.remove('body--popup');
+        document.body.classList.remove("body--popup");
         setCurrentColor(null);
     };
     const calculateColors = () => {
@@ -110,7 +110,7 @@ export const App: FC<AppProps> = () => {
             </div>
 
             <Footer>
-                Built by{' '}
+                Built by{" "}
                 <a href="https://crgeary.com" rel="noopener noreferrer" target="_blank">
                     Christopher Geary
                 </a>

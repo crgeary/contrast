@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
+import React, { FC } from "react";
+import styled from "styled-components";
 
-import { ScreenReaderText } from '../ScreenReaderText';
+import { ScreenReaderText } from "../ScreenReaderText";
 
 type ThemeSwitchProps = {
     doDarkModeToggle: () => void;
@@ -38,7 +38,7 @@ const StyledThemeSwitch = styled.label`
     cursor: pointer;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 
-    input[type='checkbox'] {
+    input[type="checkbox"] {
         position: absolute;
         width: 1px;
         height: 1px;
@@ -49,7 +49,7 @@ const StyledThemeSwitch = styled.label`
         border: 0;
     }
 
-    input[type='checkbox']:checked + ${Indicator} {
+    input[type="checkbox"]:checked + ${Indicator} {
         transform: translateX(100%);
     }
 `;

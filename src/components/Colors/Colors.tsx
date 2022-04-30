@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
-import tinycolor from 'tinycolor2';
-import { ScreenReaderText } from '../ScreenReaderText';
+import React, { FC } from "react";
+import styled from "styled-components";
+import tinycolor from "tinycolor2";
+import { ScreenReaderText } from "../ScreenReaderText";
 
 type ColorsProps = {
     colors: string[];
@@ -80,7 +80,7 @@ const ColorsSwatch = styled.li<{ $isDark: boolean }>`
     display: flex;
     overflow: hidden;
     font-family: monospace;
-    color: ${({ $isDark }) => ($isDark ? '#f7fafc' : '#1a202c')};
+    color: ${({ $isDark }) => ($isDark ? "#f7fafc" : "#1a202c")};
 `;
 
 const ColorsRemove = styled.button`

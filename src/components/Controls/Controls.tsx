@@ -1,9 +1,9 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import styled from 'styled-components';
+import React, { ComponentPropsWithoutRef, FC } from "react";
+import styled from "styled-components";
 
-import { Container } from '../Container';
+import { Container } from "../Container";
 
-export const Controls: FC<ComponentPropsWithoutRef<'div'>> = ({ children, ...props }) => {
+export const Controls: FC<ComponentPropsWithoutRef<"div">> = ({ children, ...props }) => {
     return (
         <Wrapper {...props}>
             <Container>{children}</Container>

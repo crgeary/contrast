@@ -1,12 +1,12 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import styled from 'styled-components';
-import { SwatchColor } from '../../types/SwatchColor';
-import { getConformanceLevel } from '../../utils/contrast';
-import { Check } from './icons/Check';
-import { Cross } from './icons/Cross';
-import { Info } from './icons/Info';
+import React, { ComponentPropsWithoutRef, FC } from "react";
+import styled from "styled-components";
+import { SwatchColor } from "../../types/SwatchColor";
+import { getConformanceLevel } from "../../utils/contrast";
+import { Check } from "./icons/Check";
+import { Cross } from "./icons/Cross";
+import { Info } from "./icons/Info";
 
-type SwatchProps = Omit<ComponentPropsWithoutRef<'button'>, 'color'> & {
+type SwatchProps = Omit<ComponentPropsWithoutRef<"button">, "color"> & {
     color: SwatchColor;
     doColorSwatchClick: (color: SwatchColor) => void;
 };
@@ -128,13 +128,13 @@ const SwatchScores = styled.span`
     color: #1a202c;
 `;
 
-const SwatchText = styled.span<{ $size: 'regular' | 'large'; $isStrike: boolean }>`
+const SwatchText = styled.span<{ $size: "regular" | "large"; $isStrike: boolean }>`
     display: block;
-    font-size: ${({ $size }) => ($size === 'large' ? '26px' : null)};
-    text-decoration: ${({ $isStrike }) => ($isStrike ? 'line-through' : null)};
+    font-size: ${({ $size }) => ($size === "large" ? "26px" : null)};
+    text-decoration: ${({ $isStrike }) => ($isStrike ? "line-through" : null)};
 `;
 
-const SwatchScore = styled.span<{ $variant: 'pass' | 'fail' }>`
+const SwatchScore = styled.span<{ $variant: "pass" | "fail" }>`
     position: relative;
     background-color: rgb(255, 255, 255, 0.875);
     padding: 5px 5px 5px 26px;
@@ -161,8 +161,8 @@ const SwatchScore = styled.span<{ $variant: 'pass' | 'fail' }>`
 
     ${({ $variant }) => `
         svg {
-            color: ${$variant === 'pass' ? '#276749' : null};
-            color: ${$variant === 'fail' ? '#9b2c2c' : null};
+            color: ${$variant === "pass" ? "#276749" : null};
+            color: ${$variant === "fail" ? "#9b2c2c" : null};
         }
     `}
 `;

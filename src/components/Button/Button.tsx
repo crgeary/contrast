@@ -1,7 +1,7 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import styled from 'styled-components';
+import React, { ComponentPropsWithoutRef, FC } from "react";
+import styled from "styled-components";
 
-export const Button: FC<ComponentPropsWithoutRef<'button'>> = (props) => {
+export const Button: FC<ComponentPropsWithoutRef<"button">> = (props) => {
     return <StyledButton type="submit" {...props} />;
 };
 

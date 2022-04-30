@@ -1,7 +1,7 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import styled from 'styled-components';
+import React, { ComponentPropsWithoutRef, FC } from "react";
+import styled from "styled-components";
 
-export const Logo: FC<ComponentPropsWithoutRef<'a'>> = ({ ...props }) => {
+export const Logo: FC<ComponentPropsWithoutRef<"a">> = ({ ...props }) => {
     return (
         <StyledLogo href="/" {...props}>
             <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 478 94">

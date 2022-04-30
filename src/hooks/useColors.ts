@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import tinycolor from 'tinycolor2';
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import tinycolor from "tinycolor2";
 
-import { getColorsFromUrlHash } from '../utils/colors';
+import { getColorsFromUrlHash } from "../utils/colors";
 
 export const useColors = (): [string[], Dispatch<SetStateAction<string[]>>] => {
     const [colors, setColors] = useState<string[]>([]);
@@ -16,8 +16,8 @@ export const useColors = (): [string[], Dispatch<SetStateAction<string[]>>] => {
     useEffect(() => {
         window.history.replaceState(
             undefined,
-            '',
-            `#${colors.map((color) => tinycolor(color).toHex()).join(',')}`
+            "",
+            `#${colors.map((color) => tinycolor(color).toHex()).join(",")}`,
         );
     }, [colors]);
 

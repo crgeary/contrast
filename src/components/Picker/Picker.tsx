@@ -1,18 +1,18 @@
-import React, { ChangeEventHandler, FC, FormEventHandler, useState } from 'react';
-import { ColorChangeHandler, SketchPicker } from 'react-color';
-import styled from 'styled-components';
-import tinycolor from 'tinycolor2';
+import React, { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
+import { ColorChangeHandler, SketchPicker } from "react-color";
+import styled from "styled-components";
+import tinycolor from "tinycolor2";
 
-import { Button } from '../Button/Button';
-import { ScreenReaderText } from '../ScreenReaderText';
-import { Color } from './icons/Color';
+import { Button } from "../Button/Button";
+import { ScreenReaderText } from "../ScreenReaderText";
+import { Color } from "./icons/Color";
 
 type PickerProps = {
     doNewColor: (color: string) => void;
 };
 
 export const Picker: FC<PickerProps> = ({ doNewColor }) => {
-    const [currentColor, setCurrentColor] = useState('');
+    const [currentColor, setCurrentColor] = useState("");
     const [showColorPicker, setShowColorPicker] = useState(false);
 
     const doInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -27,7 +27,7 @@ export const Picker: FC<PickerProps> = ({ doNewColor }) => {
     const doNewColorSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         doNewColor(currentColor);
-        setCurrentColor('');
+        setCurrentColor("");
         setShowColorPicker(false);
     };
 
@@ -107,7 +107,7 @@ const PickerInput = styled.div`
     border-radius: 2px;
     position: relative;
 
-    input[type='text'] {
+    input[type="text"] {
         background-color: #ffffff;
         border: none;
         margin: 0;

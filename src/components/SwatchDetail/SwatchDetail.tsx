@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
-import { SwatchColor } from '../../types/SwatchColor';
-import { getConformanceLevel } from '../../utils/contrast';
+import React, { FC } from "react";
+import styled from "styled-components";
+import { SwatchColor } from "../../types/SwatchColor";
+import { getConformanceLevel } from "../../utils/contrast";
 
 type SwatchDetailProps = {
     color: SwatchColor;
@@ -163,25 +163,25 @@ const SwatchDetailPreview = styled.div`
     }
 `;
 
-const SwatchDetailText = styled.p<{ $size: 'small' | 'regular' | 'large' }>`
+const SwatchDetailText = styled.p<{ $size: "small" | "regular" | "large" }>`
     display: block;
     font-weight: 600;
     margin-bottom: 15px;
 
     ${({ $size }) => {
-        if ($size === 'large') {
+        if ($size === "large") {
             return `
                 font-size: 64px;
                 line-height: 1.1;
             `;
         }
-        if ($size === 'regular') {
+        if ($size === "regular") {
             return `
                 font-size: 24px;
                 line-height: 1.25;
             `;
         }
-        if ($size === 'small') {
+        if ($size === "small") {
             return `font-size: 16px;`;
         }
     }}
@@ -242,7 +242,7 @@ const SwatchDetailLevelLabel = styled.div`
     }
 `;
 
-const SwatchDetailLevelScore = styled.div<{ $variant: 'pass' | 'fail' }>`
+const SwatchDetailLevelScore = styled.div<{ $variant: "pass" | "fail" }>`
     width: 100px;
     border-left: 1px solid #cbd5e0;
     margin-left: 10px;
@@ -266,8 +266,8 @@ const SwatchDetailLevelScore = styled.div<{ $variant: 'pass' | 'fail' }>`
     }
 
     ${({ $variant }) => `
-        color: ${$variant === 'pass' ? '#276749' : null};
-        color: ${$variant === 'fail' ? '#9b2c2c' : null};
+        color: ${$variant === "pass" ? "#276749" : null};
+        color: ${$variant === "fail" ? "#9b2c2c" : null};
     `}
 `;
 

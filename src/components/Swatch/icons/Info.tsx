@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef, FC } from "react";
 
-export const Info: FC<ComponentPropsWithoutRef<'svg'>> = (props) => (
+export const Info: FC<ComponentPropsWithoutRef<"svg">> = (props) => (
     <svg
         aria-hidden="true"
         width="20"

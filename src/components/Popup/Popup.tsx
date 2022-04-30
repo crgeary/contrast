@@ -1,6 +1,6 @@
-import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
-import { ScreenReaderText } from '../ScreenReaderText';
+import React, { FC, ReactNode } from "react";
+import styled from "styled-components";
+import { ScreenReaderText } from "../ScreenReaderText";
 
 type PopupProps = {
     children: ReactNode;
