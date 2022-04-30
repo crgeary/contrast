@@ -39,6 +39,7 @@ export const Picker: FC<PickerProps> = ({ doNewColor }) => {
                     placeholder="Hex/RGB"
                     onChange={doInputChange}
                     value={currentColor}
+                    data-cy="add-color-input"
                 />
                 <PickerSwatch type="button" onClick={doColorPickerToggle}>
                     <Color />
@@ -58,6 +59,7 @@ export const Picker: FC<PickerProps> = ({ doNewColor }) => {
                     color: tinycolor(currentColor).isDark() ? `#FFFFFF` : `#000000`,
                 }}
                 disabled={currentColor ? false : true}
+                data-cy="add-color-button"
             >
                 Add Color
             </Button>

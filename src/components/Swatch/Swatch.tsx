@@ -14,13 +14,19 @@ type SwatchProps = Omit<ComponentPropsWithoutRef<'button'>, 'color'> & {
 export const Swatch: FC<SwatchProps> = ({ color, doColorSwatchClick, ...props }) => {
     const contrast = Math.floor(color.contrast * 100) / 100;
     const { regular: score, large: scoreLarge } = getConformanceLevel(contrast);
-
+    const textColor = color.textColor.toHexString();
+    const backgroundColor = color.backgroundColor.toHexString();
     return (
-        <StyledSwatch onClick={() => doColorSwatchClick(color)} {...props}>
+        <StyledSwatch
+            data-backgroundColor={backgroundColor}
+            data-textColor={textColor}
+            onClick={() => doColorSwatchClick(color)}
+            {...props}
+        >
             <SwatchPreview
                 style={{
-                    backgroundColor: color.backgroundColor.toHexString(),
-                    color: color.textColor.toHexString(),
+                    backgroundColor,
+                    color: textColor,
                 }}
             >
                 <SwatchText $size="regular" $isStrike={!score}>
@@ -45,7 +51,7 @@ export const Swatch: FC<SwatchProps> = ({ color, doColorSwatchClick, ...props })
             <SwatchBody>
                 <SwatchContrast>
                     Contrast
-                    <strong>{contrast}:1</strong>
+                    <strong data-contrast={contrast}>{contrast}:1</strong>
                 </SwatchContrast>
                 <SwatchInfo />
             </SwatchBody>

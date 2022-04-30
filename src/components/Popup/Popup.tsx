@@ -9,7 +9,7 @@ type PopupProps = {
 
 export const Popup: FC<PopupProps> = ({ children, closePopup }) => {
     return (
-        <StyledPopup>
+        <StyledPopup data-cy="popup">
             <PopupBackface onClick={closePopup}></PopupBackface>
             <PopupWindow>
                 {children}

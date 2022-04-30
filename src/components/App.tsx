@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEventHandler, FC, useState } from 'react';
 import tinycolor, { Instance } from 'tinycolor2';
 import { hex } from 'wcag-contrast';
 

@@ -29,7 +29,7 @@ export const Swatches: FC<SwatchesProps> = ({
                     </SwatchesInfo>
                     <SwatchesSwatches>
                         {colors.map((color, k) => (
-                            <SwatchesSwatch key={k}>
+                            <SwatchesSwatch key={k} data-cy="swatch">
                                 <Swatch color={color} doColorSwatchClick={doColorSwatchClick} />
                             </SwatchesSwatch>
                         ))}

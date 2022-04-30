@@ -11,7 +11,7 @@ type ColorsProps = {
 export const Colors: FC<ColorsProps> = ({ colors, doRemoveColor }) => {
     return (
         <StyledColors>
-            <ColorsSwatches>
+            <ColorsSwatches data-cy="colors-list">
                 {colors
                     .map((c) => tinycolor(c))
                     .map((color, k) => (
