@@ -3,14 +3,17 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "check-ts": "tsc --noEmit --project tsconfig.json",
         "build": "next build && next export",
         "dev": "next dev",
         "format": "prettier --write .",
+        "format:check": "prettier --check .",
         "lint": "next lint",
         "prepare": "husky install",
         "start": "next start",
-        "test:e2e": "cypress open"
+        "start:static": "npx http-server ./out --port=3000",
+        "test:e2e": "cypress open",
+        "test:e2e:headless": "cypress run",
+        "ts:check": "tsc --noEmit --project tsconfig.json"
     },
     "dependencies": {
         "husky": "^7.0.4",
