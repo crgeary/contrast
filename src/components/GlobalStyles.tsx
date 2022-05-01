@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     a {
-        color: #2c7a7b;
+        color: ${({ theme }) => theme.colors.primary};
         text-decoration: none;
         &:hover,
         &:focus {

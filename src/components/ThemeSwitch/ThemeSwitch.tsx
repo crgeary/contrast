@@ -20,7 +20,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ doDarkModeToggle, ...props }
 const Indicator = styled.span`
     width: 24px;
     height: 24px;
-    background-color: #2c7a7b;
+    background-color: ${({ theme }) => theme.colors.primary};
     display: block;
     transition: transform 0.2s ease;
     border-radius: 9999px;
