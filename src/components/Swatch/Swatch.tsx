@@ -60,7 +60,7 @@ export const Swatch: FC<SwatchProps> = ({ color, doColorSwatchClick, ...props })
 };
 
 const StyledSwatch = styled.button`
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.swatch.background};
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     line-height: 1.25;
     border-radius: 2px;
@@ -83,14 +83,13 @@ const StyledSwatch = styled.button`
 `;
 
 const SwatchInfo = styled(Info)`
-    color: #4a5568;
+    color: ${({ theme }) => theme.swatch.info.text};
     transition: transform 0.2s ease;
 `;
 
 const SwatchPreview = styled.span`
     padding: 15px;
     display: block;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     font-weight: 600;
     position: relative;
 `;
@@ -99,11 +98,11 @@ const SwatchContrast = styled.span`
     text-transform: uppercase;
     font-size: 10px;
     line-height: 1.25;
-    color: #a0aec0;
+    color: ${({ theme }) => theme.swatch.label.text};
     strong {
         font-size: 16px;
         display: block;
-        color: #2d3748;
+        color: ${({ theme }) => theme.swatch.value.text};
     }
 `;
 
@@ -159,34 +158,10 @@ const SwatchScore = styled.span<{ $variant: "pass" | "fail" }>`
         transform: translateY(-50%);
     }
 
-    ${({ $variant }) => `
+    ${({ $variant, theme }) => `
         svg {
-            color: ${$variant === "pass" ? "#276749" : null};
-            color: ${$variant === "fail" ? "#9b2c2c" : null};
+            color: ${$variant === "pass" ? theme.colors.success : null};
+            color: ${$variant === "fail" ? theme.colors.error : null};
         }
     `}
 `;
-
-/*
-
-.app--dark {
-    .swatch {
-        background-color: #2d3748;
-
-        &__contrast {
-            strong {
-                color: #f7fafc;
-            }
-        }
-
-        &__info {
-            color: #cbd5e0;
-        }
-        &:hover &__info,
-        &:focus &__info {
-            color: #edf2f7;
-        }
-    }
-}
-
-*/

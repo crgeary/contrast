@@ -1,13 +1,15 @@
 import { AppProps } from "next/app";
+import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../components/GlobalStyles";
-import { theme } from "../theme";
+import { theme, darkTheme } from "../theme";
 
 const App = ({ Component, pageProps }: AppProps) => {
+    const [isDark, setIsDark] = useState(false);
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={isDark ? darkTheme : theme}>
             <GlobalStyles />
-            <Component {...pageProps} />
+            <Component setIsDark={setIsDark} {...pageProps} />
         </ThemeProvider>
     );
 };

@@ -20,7 +20,7 @@ export const Swatches: FC<SwatchesProps> = ({
     doColorSwatchClick,
 }) => {
     return (
-        <StyledSwatches>
+        <div>
             {colors.length >= 2 ? (
                 <>
                     <SwatchesInfo>
@@ -43,13 +43,9 @@ export const Swatches: FC<SwatchesProps> = ({
                     <NoColorsGraphic />
                 </SwatchesNone>
             )}
-        </StyledSwatches>
+        </div>
     );
 };
-
-const StyledSwatches = styled.div`
-    margin-bottom: 90px;
-`;
 
 const SwatchesNone = styled.div`
     width: 100%;
@@ -60,7 +56,7 @@ const SwatchesNone = styled.div`
 const SwatchesInfo = styled.p`
     text-align: center;
     font-size: 14px;
-    color: #4a5568;
+    margin-bottom: 25px;
 `;
 
 const SwatchesSwatches = styled.div`
@@ -93,7 +89,7 @@ const SwatchesSwatch = styled.div`
 `;
 
 const SwatchesError = styled.div`
-    color: #9b2c2c;
+    color: ${({ theme }) => theme.colors.error};
     text-align: center;
     margin-bottom: 25px;
     font-size: 18px;

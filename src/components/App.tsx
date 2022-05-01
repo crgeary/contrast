@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC, useState } from "react";
+import React, { ChangeEventHandler, Dispatch, FC, SetStateAction, useState } from "react";
 import tinycolor, { Instance } from "tinycolor2";
 import { hex } from "wcag-contrast";
 
@@ -18,11 +18,12 @@ import { SwatchColor } from "../types/SwatchColor";
 import { Container } from "./Container";
 import { useColors } from "../hooks/useColors";
 
-type AppProps = {};
+type AppProps = {
+    setIsDark: Dispatch<SetStateAction<boolean>>;
+};
 
-export const App: FC<AppProps> = () => {
+export const App: FC<AppProps> = ({ setIsDark }) => {
     const [colors, setColors] = useColors();
-    const [isDark, setIsDark] = useState(false);
     const [currentColor, setCurrentColor] = useState<SwatchColor | null>(null);
     const [minContrast, setMinContrast] = useState(0);
 
@@ -70,7 +71,7 @@ export const App: FC<AppProps> = () => {
     };
 
     return (
-        <div className={`app${isDark ? ` app--dark` : ``}`}>
+        <div className="app">
             <Header doDarkModeToggle={doDarkModeToggle}>
                 <Logo />
                 <HeaderDescription>

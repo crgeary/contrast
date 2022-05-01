@@ -11,9 +11,8 @@ export const Footer: FC<ComponentPropsWithoutRef<"footer">> = ({ children, ...pr
 };
 
 const StyledFooter = styled.footer`
-    font-size: 14px;
-    margin-bottom: 25px;
-    color: #718096;
+    padding: 50px 0;
     margin-top: auto;
     text-align: center;
+    font-size: 14px;
 `;

@@ -114,7 +114,7 @@ const RangeSliderControl = styled.div`
             height: 10px;
             border: none;
             border-radius: 2px;
-            background-color: #a0aec0;
+            background-color: ${({ theme }) => theme.range.track.background};
         }
 
         &::-moz-range-track {
@@ -122,7 +122,7 @@ const RangeSliderControl = styled.div`
             height: 10px;
             border: none;
             border-radius: 2px;
-            background-color: #a0aec0;
+            background-color: ${({ theme }) => theme.range.track.background};
         }
     }
 `;
@@ -136,7 +136,7 @@ const RangeSliderCurrent = styled.span`
     bottom: calc(100% + 5px);
     text-align: center;
     border: none;
-    background-color: #234e52;
+    background-color: ${({ theme }) => theme.colors.primary};
     z-index: 10;
     color: #ffffff;
     width: 40px;
@@ -152,10 +152,11 @@ const RangeSliderIndicator = styled.button<{ $value: number }>`
     bottom: calc(100% + 5px);
     text-align: center;
     border: none;
-    background-color: #cbd5e0;
+    background-color: ${({ theme }) => theme.range.track.background};
     z-index: 5;
     cursor: pointer;
     padding: 4px 6px;
+    color: ${({ theme }) => theme.range.track.text};
 
     &::after {
         content: "";

@@ -57,7 +57,7 @@ const PopupBackface = styled.div`
 `;
 
 const PopupWindow = styled.div`
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.popup.background};
     border-radius: 2px;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     max-width: 750px;
@@ -76,23 +76,10 @@ const PopupClose = styled.button`
     bottom: calc(100% + 10px);
     right: 0;
     cursor: pointer;
-    color: rgba(#ffffff, 0.65);
+    color: rgba(255, 255, 255, 0.65);
 
     & > svg {
         width: 32px;
         height: 32px;
     }
 `;
-
-/*
-
-.app--dark {
-    .popup {
-        background-color: rgba(#1a202c, 0.85);
-        &__window {
-            background-color: #2d3748;
-        }
-    }
-}
-
-*/

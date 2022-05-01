@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { theme } from "../../theme";
 import { SwatchColor } from "../../types/SwatchColor";
 import { getConformanceLevel } from "../../utils/contrast";
 
@@ -193,12 +194,12 @@ const SwatchDetailDetails = styled.div`
         text-transform: uppercase;
         font-size: 12px;
         font-weight: 400;
-        color: #718096;
+        color: ${({ theme }) => theme.swatch.label.text};
     }
     p {
         font-size: 24px;
         font-weight: 600;
-        color: #1a202c;
+        color: ${({ theme }) => theme.swatch.value.text};
     }
 `;
 
@@ -225,7 +226,7 @@ const SwatchDetailA11y = styled.div`
 const SwatchDetailLevel = styled.div`
     font-size: 12px;
     display: flex;
-    border-top: 1px solid #cbd5e0;
+    border-top: 1px solid ${({ theme }) => theme.swatch.border};
     border-radius: 2px;
     padding: 10px 0;
 `;
@@ -233,7 +234,7 @@ const SwatchDetailLevel = styled.div`
 const SwatchDetailLevelLabel = styled.div`
     flex: 1 1 auto;
     h3 {
-        color: #1a202c;
+        color: ${({ theme }) => theme.swatch.label.text};
         font-size: 14px;
     }
     h3,
@@ -244,7 +245,7 @@ const SwatchDetailLevelLabel = styled.div`
 
 const SwatchDetailLevelScore = styled.div<{ $variant: "pass" | "fail" }>`
     width: 100px;
-    border-left: 1px solid #cbd5e0;
+    border-left: 1px solid ${({ theme }) => theme.swatch.border};
     margin-left: 10px;
     display: flex;
     flex-direction: column;
@@ -265,9 +266,9 @@ const SwatchDetailLevelScore = styled.div<{ $variant: "pass" | "fail" }>`
         text-transform: uppercase;
     }
 
-    ${({ $variant }) => `
-        color: ${$variant === "pass" ? "#276749" : null};
-        color: ${$variant === "fail" ? "#9b2c2c" : null};
+    ${({ $variant, theme }) => `
+        color: ${$variant === "pass" ? theme.colors.success : null};
+        color: ${$variant === "fail" ? theme.colors.error : null};
     `}
 `;
 

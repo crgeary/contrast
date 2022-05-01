@@ -32,7 +32,7 @@ const StyledThemeSwitch = styled.label`
     right: 25px;
     height: 30px;
     width: 54px;
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.themeSwitch.background};
     padding: 3px;
     border-radius: 9999px;
     cursor: pointer;

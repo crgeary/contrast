@@ -53,14 +53,7 @@ export const Picker: FC<PickerProps> = ({ doNewColor }) => {
                     />
                 </PickerColorPicker>
             </PickerInput>
-            <Button
-                style={{
-                    backgroundColor: currentColor,
-                    color: tinycolor(currentColor).isDark() ? `#FFFFFF` : `#000000`,
-                }}
-                disabled={currentColor ? false : true}
-                data-cy="add-color-button"
-            >
+            <Button disabled={!currentColor} data-cy="add-color-button">
                 Add Color
             </Button>
         </StyledPicker>
@@ -71,10 +64,10 @@ const StyledPicker = styled.form`
     display: flex;
     margin: 0 auto;
     max-width: 520px;
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.picker.input.background};
     padding: 3px;
-    border: 1px solid #cbd5e0;
-    border-radius: 2px;
+    border: 1px solid ${({ theme }) => theme.picker.input.border};
+    border-radius: 9px;
 `;
 
 const PickerColorPicker = styled.div`
@@ -91,24 +84,24 @@ const PickerSwatch = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #718096;
+    color: ${({ theme }) => theme.picker.input.text};
     cursor: pointer;
     margin: 0 5px;
 
     svg {
         width: 24px;
         height: 24px;
+        fill: currentColor;
     }
 `;
 
 const PickerInput = styled.div`
     display: flex;
     flex: 1 1 auto;
-    border-radius: 2px;
     position: relative;
 
     input[type="text"] {
-        background-color: #ffffff;
+        background-color: transparent;
         border: none;
         margin: 0;
         height: 100%;
@@ -116,28 +109,11 @@ const PickerInput = styled.div`
         font-size: 20px;
         padding: 7px 10px;
         width: 100%;
-    }
-`;
+        border-radius: 7px;
+        color: ${({ theme }) => theme.picker.input.text};
 
-/*
-
-
-.app--dark {
-    .picker {
-        border-color: #4a5568;
-        background-color: #2d3748;
-
-        &__input {
-            input[type='text'] {
-                background-color: #2d3748;
-                color: #f7fafc;
-
-                &::placeholder {
-                    color: #a0aec0;
-                }
-            }
+        ::placeholder {
+            color: ${({ theme }) => theme.picker.input.text};
         }
     }
-}
-
-*/
+`;

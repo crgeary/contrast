@@ -18,6 +18,7 @@ export const Colors: FC<ColorsProps> = ({ colors, doRemoveColor }) => {
                         <ColorsSwatch
                             key={k}
                             $isDark={color.isDark()}
+                            $color={color.toHexString()}
                             style={{ backgroundColor: color.toHexString() }}
                         >
                             <ColorsRemove
@@ -66,13 +67,16 @@ const ColorsSwatches = styled.ul`
     justify-content: center;
 `;
 
-const ColorsSwatch = styled.li<{ $isDark: boolean }>`
+const ColorsSwatch = styled.li<{ $color: string; $isDark: boolean }>`
     list-style: none;
     flex: 1 0 auto;
     height: 28px;
-    margin-left: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
     border-radius: 2px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid transparent;
+    border-color: ${({ theme, $color }) =>
+        theme.page.background === $color ? "rgba(0, 0, 0, .1)" : null};
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
     padding: 0 8px 0 0;
     flex: 0 0 auto;
