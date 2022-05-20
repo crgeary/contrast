@@ -52,6 +52,10 @@ const StyledThemeSwitch = styled.label`
     input[type="checkbox"]:checked + ${Indicator} {
         transform: translateX(100%);
     }
+
+    @media print {
+        display: none;
+    }
 `;
 
 /*

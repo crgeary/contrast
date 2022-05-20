@@ -21,4 +21,13 @@ const StyledLogo = styled.a`
     width: 220px;
     display: inline-block;
     color: ${({ theme }) => theme.colors.primary};
+
+    svg {
+        display: block;
+    }
+
+    @media print {
+        width: 160px;
+        margin-bottom: 0;
+    }
 `;

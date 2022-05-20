@@ -13,4 +13,8 @@ export const Controls: FC<ComponentPropsWithoutRef<"div">> = ({ children, ...pro
 
 const Wrapper = styled.div`
     margin-bottom: 50px;
+
+    @media print {
+        display: none;
+    }
 `;

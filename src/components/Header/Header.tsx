@@ -29,4 +29,9 @@ const StyledHeader = styled.header`
     *:last-child {
         margin-bottom: 0;
     }
+
+    @media print {
+        padding-top: 25px;
+        margin-bottom: 25px;
+    }
 `;

@@ -17,4 +17,8 @@ const StyledHeaderDescription = styled.div`
     svg {
         color: #285e61;
     }
+
+    @media print {
+        display: none;
+    }
 `;
