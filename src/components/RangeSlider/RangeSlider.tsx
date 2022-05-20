@@ -55,6 +55,10 @@ const StyledRangeSlider = styled.div`
     margin-top: 25px;
     height: 50px;
     padding-top: 24px;
+
+    @media print {
+        display: none;
+    }
 `;
 
 const RangeSliderControl = styled.div`

@@ -86,6 +86,10 @@ const SwatchesSwatch = styled.div`
     @media screen and (min-width: 1450px) {
         max-width: 12.5%;
     }
+
+    @media print {
+        max-width: 25%;
+    }
 `;
 
 const SwatchesError = styled.div`
